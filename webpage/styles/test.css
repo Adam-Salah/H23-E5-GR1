@@ -1,9 +1,18 @@
+:root {
+font-family: monospace;
+}
+
+.transparent-box {
+
+
+}
 .banner {
     background-color: black;
     color: white;
     font-size: 10px;
+    position: fixed;
     height: 20em;
-    position: relative;
+    width: 100vw;
     user-select: none;
 }
 
