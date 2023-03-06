@@ -1,4 +1,9 @@
 function ping_function() {
-    document.getElementById("ping").innerHTML = "Pong";
-    console.log("js file linked");
+    if (document.getElementById("ping")) {
+        document.getElementById("ping").innerHTML = "Pong";
+        document.getElementById("ping").id = "pong";
+    } else {
+        document.getElementById("pong").innerHTML = "Ping";
+        document.getElementById("pong").id = "ping";
+    }
 }

@@ -1,0 +1,22 @@
+.banner {
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    height: 100px
+}
+
+.logo {
+    float: left;
+    margin: 10px 30px;
+}
+
+.links {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+.links div {
+    float: left;
+    margin: 30px 30px;
+}
