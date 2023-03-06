@@ -14,7 +14,6 @@
     top: 50%;
     transform: translateX(10%) translateY(-50%);
     float: left;
-
     border: 5px solid red;
     border-radius: 20%;
 }
@@ -29,7 +28,6 @@
 }
 
 .links-container a {
-
     background-color: black;
     font-size: 4em;
     display: block;
@@ -40,7 +38,6 @@
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
-
     padding: 1em;
     border: 3px solid white;
     margin-right: 3rem;
