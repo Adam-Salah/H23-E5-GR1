@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 #
 urlpatterns = [
+    # every time python receives a request starting with playground/, it will send it to playground.urls
+    path('', include('playground.urls')),
     path('playground/', include('playground.urls')),
     path('admin/', admin.site.urls)
 ]
