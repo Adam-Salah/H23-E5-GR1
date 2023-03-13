@@ -25,9 +25,9 @@ function mouseleave_link(id) {
 }
 
 function mousedown_link(id) {
-    document.getElementById(id).style.fontSize = "3em";
+    document.getElementById(id).style.fontSize ;
 }
 
 function mouseup_link(id) {
-    document.getElementById(id).style.fontSize = "4em";
+    document.getElementById(id).style.fontSize ;
 }
