@@ -17,11 +17,11 @@ for (let i = 0; i < banner_links.length; i++) {
 }
 
 function mouseenter_link(id) {
-    document.getElementById(id).style.backgroundColor = "grey";
+    document.getElementById(id).style.backgroundColor = "#f5f8fc";
 }
 
 function mouseleave_link(id) {
-    document.getElementById(id).style.backgroundColor = "black";
+    document.getElementById(id).style.backgroundColor = "white";
 }
 
 function mousedown_link(id) {

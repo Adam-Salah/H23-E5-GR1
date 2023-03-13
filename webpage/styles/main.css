@@ -1,0 +1,90 @@
+:root {
+    background-color: white;
+    font-family: monospace;
+    font-size: 10px;
+}
+
+.banner {
+    background-color: cadetblue;
+    color: black;
+    height: 10em;
+    width: 100%;
+    user-select: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.logo {
+    height: 75%;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateX(10%) translateY(-50%);
+    float: left;
+    border: 5px solid red;
+    border-radius: 20%;
+}
+
+.links-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: right;
+    font-size: 2rem;
+}
+
+.links-container a {
+    background-color: white;
+    padding: 1em;
+    border: 1px solid lightgray;
+    margin-right: 3rem;
+    border-radius: 15%;
+}
+
+.card {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(-50%);
+    font-size: 3em;
+    box-sizing: border-box;
+    background-color: white;
+    width: min-content;
+    height: min-content;
+    padding: 2em 4em;
+    border: 3px solid black;
+    border-radius: 50px;
+}
+
+.card form {
+    margin-top: 25%;
+    text-align: center;
+}
+
+.card form input {
+    position: relative;
+    width: 150%;
+
+    left: -25%;
+    background-color: white;
+}
+
+.card form label {
+
+}
+
+.card form input#username,#password {
+    font-size: 1em;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+}
+
+.card form input.submit {
+
+    margin-top: 20%;
+    padding: 10% 0;
+    font-family: monospace;
+    font-size: 1em;
+
+}
