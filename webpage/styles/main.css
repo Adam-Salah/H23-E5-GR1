@@ -5,11 +5,10 @@
 }
 
 .banner {
-    background-color: cadetblue;
+    background-color: white;
     color: black;
     height: 10em;
     width: 100%;
-    user-select: none;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -30,15 +29,26 @@
     top: 50%;
     transform: translateY(-50%);
     float: right;
-    font-size: 2rem;
 }
 
-.links-container a {
+.links-container button {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 4rem;
     background-color: white;
-    padding: 1em;
     border: 1px solid lightgray;
     margin-right: 3rem;
     border-radius: 15%;
+    cursor: pointer;
+}
+
+.separator {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    top: 100%;
+    transform: translateY(-10%);
+    background-color: black;
 }
 
 .card {
@@ -51,7 +61,7 @@
     background-color: white;
     width: min-content;
     height: min-content;
-    padding: 2em 4em;
+    padding: 5rem 10rem;
     border: 3px solid black;
     border-radius: 50px;
 }
@@ -73,7 +83,7 @@
 
 }
 
-.card form input#username,#password {
+.card form input#username,#email,#password {
     font-size: 1em;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -86,5 +96,4 @@
     padding: 10% 0;
     font-family: monospace;
     font-size: 1em;
-
 }

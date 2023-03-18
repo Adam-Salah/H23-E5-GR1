@@ -1,18 +1,14 @@
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-
 <div class="banner">
     <a href="home.html">
         <img class="logo" src="ressources/images/placeholder.png" alt="Logo">
     </a>
     <div class="links-container">
-        <a id="banner-link-1">Link 1</a>
-        <a id="banner-link-2">Link 2</a>
-        <a id="banner-link-3">Link 3</a>
-        <a id="banner-link-4" href="login.html">Login</a>
+        <button id="banner-link-1">Link 1</button>
+        <button id="banner-link-2">Link 2</button>
+        <button id="banner-link-3" onclick=redirect(value) value="browse.html">Browse</button>
+        <button id="banner-link-4" onclick=redirect(value) value="login.html">Login</button>
     </div>
+    <div class="separator"></div>
 </div>
+
+<script src="scripts/main.js"></script>
