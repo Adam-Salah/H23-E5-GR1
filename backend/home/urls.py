@@ -3,6 +3,6 @@ from . import views
 
 #URLConfiguration
 urlpatterns = [
-    path('', views.home),
+    path('', views.homeScreen),
     #path('test/', views.homeTest),
 ]
