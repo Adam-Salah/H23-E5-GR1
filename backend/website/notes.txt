@@ -1,0 +1,17 @@
+PySpice Documentation : https://pyspice.fabrice-salvaire.fr/pages/documentation.html
+
+GitHub : https://github.com/PySpice-org/PySpice
+
+pip install PySpice
+
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.15-py2.py3-none-any.whl (140 kB)
+  WARNING: The script normalizer.exe is installed in 'D:\Users\2127040\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts cir2py.exe and pyspice-post-installation.exe are installed in 'D:\Users\2127040\AppData\Roaming\Python\Python310\Scripts' which is not on PATH. 
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed PySpice-1.5 PyYAML-6.0 cffi-1.15.1 charset-normalizer-3.1.0 contourpy-1.0.7 cycler-0.11.0 fonttools-4.39.2 idna-3.4 kiwisolver-1.4.4 matplotlib-3.7.1 numpy-1.24.2 packaging-23.0 pillow-9.4.0 ply-3.11 pycparser-2.21 pyparsing-3.0.9 python-dateutil-2.8.2 requests-2.28.2 scipy-1.10.1 six-1.16.0 urllib3-1.26.15
+
+Ngspice install
+
+https://ngspice.sourceforge.io/download.html

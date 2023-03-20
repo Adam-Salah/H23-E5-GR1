@@ -17,15 +17,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
 
-
+from account.views import(
+    registration_view
+)
 
 urlpatterns = [
 
-    path('', include('home.urls')),
+    path('home/', include('home.urls')),
 
     path('admin/', admin.site.urls),
 
     path('users/', include('users.urls')),
+
+    path('register/', registration_view, name="register"),
+
+    path('testapp/', include('testapp.urls'))
 
     #path('users/', include('playgroud.urls'))
 ]
