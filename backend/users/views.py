@@ -25,19 +25,11 @@ def usersScreen(request):
     users = User.objects.all().values()
     #loads the allUsers.html template
     template = loader.get_template('allUsers.html')
-
-    listOfValues = []
-    listOfValues.append("first")
-    listOfValues.append("second")
     
     context = {
         #creates an object containing the allUsers object
         #sends the object to the template
         'users' : users,
-
-        'testing': "testing",
-        'testing2': 123,
-        'listOfValues': listOfValues
     }
     
         #outpouts the HTML that is rendered by the template
