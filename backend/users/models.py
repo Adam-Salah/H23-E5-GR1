@@ -16,7 +16,7 @@ python manage.py shell
 (from appName.modelsFile import ClassName inside models)
 >>> User.objects.all() (prints User table)
 
->>> user1 = User(firstname='Tobias', lastname='Refsnes')
+>>> user1 = User(firstname='adam', lastname='salah')
 >>> user2 = User(firstname='Linus', lastname='Refsnes')
 >>> user3 = User(firstname='Lene', lastname='Refsnes')
 >>> user4 = User(firstname='Stale', lastname='Refsnes')
@@ -43,10 +43,10 @@ python manage.py migrate
 
 class User(models.Model):
     #firstname is a Character field
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    number = models.IntegerField(null=True)
-    joinedDate = models.DateField(null=True)
+    firstname   = models.CharField(max_length=255)
+    lastname    = models.CharField(max_length=255)
+    number      = models.IntegerField(null=True)
+    joinedDate  = models.DateField(null=True)
     #null=True -> allows null values in the field
 
     #just like toString
