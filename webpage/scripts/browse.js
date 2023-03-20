@@ -1,12 +1,9 @@
-import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Project from "./Project";
 
-function switchTab(tab) {
-    switch (tab) {
-        case "tab1":
-            document;
-            break;
-        case "tab2":
-            document;
-            break;
-    }
+const root = ReactDOM.createRoot(document.getElementById('view_tab'));
+for (let i = 0; i < 100; i++) {
+    console.log(i)
+    root.render(<Project />);
 }
+

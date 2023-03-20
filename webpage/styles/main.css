@@ -7,9 +7,12 @@
 /* Banner */
 
 .banner {
+    top: 0;
+    position: fixed;
+    z-index: 1;
     background-color: white;
     color: black;
-    height: 10em;
+    height: 10vh;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -45,10 +48,10 @@
 }
 
 .separator {
-    position: relative;
+    position: fixed;
     height: 1px;
-    width: 100%;
-    top: 100%;
+    width: 99%;
+    top: 10vh;
     transform: translateY(-10%);
     background-color: black;
 }
@@ -110,21 +113,35 @@
 
 .browse_tabs {
     margin-top: 1vh;
-    width: 25%;
-    position: relative;
+    width: 25vw;
+    position: fixed;
     float: left;
+    top: 10vh;
 }
 
 .browse_tabs div {
-    --height: Calc((100vh - 15em)/5);
-    border: solid black 2px;
+    --height: Calc((100vh - 13vh)/5);
+    border: solid black .2vh;
     height: var(--height);
     line-height: var(--height);
     text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .view_tab {
+    position: relative;
+    left: 25vw;
+    width: 70vw;
     float: left;
     margin-left: 1vw;
     margin-top: 1vh;
+}
+
+
+.view_tab div {
+    position: relative;
+    float: left;
+    margin: 5vw 10vw;
+    overflow-wrap: normal;
 }
