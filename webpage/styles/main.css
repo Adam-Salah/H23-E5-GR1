@@ -138,10 +138,15 @@
     margin-top: 1vh;
 }
 
-
 .view_tab div {
     position: relative;
     float: left;
-    margin: 5vw 10vw;
+    margin: 5vw 10vh;
     overflow-wrap: normal;
+}
+
+.view_tab div div {
+    height: 10vh;
+    width: 10vw;
+    background-color: red;
 }
