@@ -26,7 +26,7 @@ python manage.py shell
 >>>   x.save()
 
 >>> User.objects.all().values() (check entire User table)
->>> User.objects.all().delete() (delete entire table)
+>>> Account.objects.all().delete() (delete entire table)
 >>> x = User.objects.all()[0] (x = user5)
 >>> x.firstname (print x's firstname)
 >>> x.firstname = "A"
@@ -46,7 +46,6 @@ class User(models.Model):
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255)
     number      = models.IntegerField(null=True)
-    joinedDate  = models.DateField(null=True)
     #null=True -> allows null values in the field
 
     #just like toString

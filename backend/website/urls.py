@@ -31,7 +31,10 @@ urlpatterns = [
 
     path('register/', registration_view, name="register"),
 
-    path('testapp/', include('testapp.urls'))
+    path('testapp/', include('testapp.urls')),
+
+    path('api/', include('api.urls')),
+
 
     #path('users/', include('playgroud.urls'))
 ]

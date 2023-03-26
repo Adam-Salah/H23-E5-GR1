@@ -42,9 +42,13 @@ INSTALLED_APPS = [
     #new apps
     'home',
     'users',
-
     'account',
-    'testapp'
+    'testapp',
+    #'api.apps.ApiConfig' also registers the app
+    'api',
+
+    #libraries
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
