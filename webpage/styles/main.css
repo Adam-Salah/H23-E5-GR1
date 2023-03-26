@@ -1,7 +1,7 @@
 :root {
     background-color: white;
     font-family: monospace;
-    font-size: 10px;
+    font-size: 0.5vw;
 }
 
 /* Banner */
@@ -12,10 +12,16 @@
     z-index: 1;
     background-color: white;
     color: black;
+    padding-bottom: 1vh;
     height: 10vh;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.banner_height {
+    top: 0;
+    height: 11vh;
 }
 
 .logo {
@@ -25,7 +31,7 @@
     top: 50%;
     transform: translateX(10%) translateY(-50%);
     float: left;
-    border: 5px solid red;
+    border: 1vh solid red;
     border-radius: 20%;
 }
 
@@ -49,9 +55,10 @@
 
 .separator {
     position: fixed;
-    height: 1px;
+    height: .1vh;
+    z-index: 1;
     width: 99%;
-    top: 10vh;
+    top: 11vh;
     transform: translateY(-10%);
     background-color: black;
 }
@@ -116,7 +123,6 @@
     width: 25vw;
     position: fixed;
     float: left;
-    top: 10vh;
 }
 
 .browse_tabs div {
@@ -149,4 +155,20 @@
     height: 10vh;
     width: 10vw;
     background-color: red;
+}
+
+/* Project */
+
+.sidebar-left {
+    position: absolute;
+    top: Calc(50% + 5.5vh);
+    transform: translateY(-50%);
+    left: 5vh;
+    border: 0.1vw black solid;
+    border-radius: 20%;
+    padding: 2vh;
+}
+
+.led {
+    font-size: 3vw;
 }
