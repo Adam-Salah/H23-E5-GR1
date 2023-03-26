@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     #new apps
     'home',
     'users',
-    'account'
+
+    'account',
+    'testapp'
 ]
 
 MIDDLEWARE = [
