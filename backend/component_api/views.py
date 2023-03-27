@@ -1,3 +1,5 @@
+"""
+
 from django.shortcuts import render
 # from django.http import JsonResponse
 from component_api.models import Component
@@ -9,6 +11,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 
 """
+"""
 def component_list(request):
     components = Component.objects.all() # will return complex data, we must turn this into python data structure
     components_list = list(components.values()) # python ds -> list
@@ -16,6 +19,7 @@ def component_list(request):
     return JsonResponse({
         'components': components_list
     })
+"""
 """
 # to hit this method, we hit this endpoint : component_api/component_list/
 @api_view(['GET'])
@@ -60,8 +64,57 @@ def component(request, pk):
         # status
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+"""
+
+from rest_framework.views import APIView
+from component_api.models import Component
+from component_api.serializer import ComponentSerializer
+
+# rest framework
+from rest_framework.response import Response
+from rest_framework import status
 
 
+class ComponentList(APIView):
+    # get request
+    def get(self, request):
+        components = Component.objects.all() 
+        serializer = ComponentSerializer(components, many=True) 
+        return Response(serializer.data)
 
+class CreateComponent(APIView):
+    def post(self, request):
+        serializer = ComponentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ComponentDetail(APIView):
 
+    def get_component_by_pk(self, pk):
+        try:
+            return Component.objects.get(pk=pk)
+        except:
+            return Response({
+                'error':'Component does not exist'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request, pk):
+        component = self.get_component_by_pk(pk)
+        serializer = ComponentSerializer(component)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, pk):
+        component = self.get_component_by_pk(pk)
+        serializer = ComponentSerializer(component, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        component = self.get_component_by_pk(pk)
+        component.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

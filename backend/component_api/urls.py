@@ -1,11 +1,11 @@
 from django.urls import path
-from . import views
+from component_api.views import ComponentList, CreateComponent, ComponentDetail
 
 urlpatterns = [
-    path('component_list/', views.component_list),
-    path('', views.create_component),
+    path('list/', ComponentList.as_view()),
+    path('', CreateComponent.as_view()),
     # dynbamic path, depends on the id
-    path('<int:pk>', views.component),
+    path('<int:pk>', ComponentDetail.as_view()),
 
 
 ]
