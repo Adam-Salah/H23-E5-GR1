@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import ItemList, ItemDetail, LocationList, LocationDetail
+from . import views
 
 urlpatterns = [
-    path('item/', ItemList.as_view()),
-    path('item/<int:pk>/', ItemList.as_view()),
-    path('location/', LocationList.as_view()),
-    path('location/<int:pk>/', LocationList.as_view()),
+    path('get/', views.get_data),
+    path('add/', views.add_item),
+    path('delete/', views.delete_item),
 
 ]

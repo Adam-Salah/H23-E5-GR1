@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'users',
     'account',
     'testapp',
-    #'api.apps.ApiConfig' also registers the app
-    'api',
+    #'base.apps.BaseConfig' also registers the app
+    'base',
 
     #libraries
     'rest_framework',
