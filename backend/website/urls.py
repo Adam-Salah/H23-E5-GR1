@@ -23,7 +23,7 @@ from account.views import(
 
 urlpatterns = [
 
-    path(' ', include('home.urls')),
+    path('', include('home.urls')),
 
     path('admin/', admin.site.urls),
 
@@ -35,7 +35,9 @@ urlpatterns = [
 
     #path('api/', include('api.urls')),
 
-    path('api/', include('api.urls'))
+    path('api/', include('api.urls')),
+
+    path('component_api/', include('component_api.urls')),
 
     #path('users/', include('playgroud.urls'))
 ]
