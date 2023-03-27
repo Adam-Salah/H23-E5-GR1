@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'testapp',
     #'base.apps.BaseConfig' also registers the app
     'base',
+    'component_api',
 
     #libraries
     'rest_framework',
