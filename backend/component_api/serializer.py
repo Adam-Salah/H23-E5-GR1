@@ -1,3 +1,5 @@
+
+"""
 from rest_framework import serializers
 from component_api.models import Component
 
@@ -29,10 +31,7 @@ class ComponentSerializer(serializers.Serializer):
 
         instance.save()
         return instance
-
-
-
-
+"""
 """
 class ComponentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,3 +49,13 @@ class ComponentSerializer(serializers.ModelSerializer):
     "capacitance": 0
 }
 """
+"""
+"""
+
+from rest_framework import serializers
+from component_api.models import Component
+
+class ComponentSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Component
+        fields = "__all__"
