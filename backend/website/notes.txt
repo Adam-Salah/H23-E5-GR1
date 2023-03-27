@@ -39,6 +39,8 @@ python manage.py shell
 (from appName.modelsFile import ClassName inside models)
 >>> User.objects.all() (prints User table)
 
+>>>Item.objects.create(name="Item #1")
+
 >>> user1 = User(firstname='adam', lastname='salah')
 >>> user2 = User(firstname='Linus', lastname='Refsnes')
 >>> user3 = User(firstname='Lene', lastname='Refsnes')

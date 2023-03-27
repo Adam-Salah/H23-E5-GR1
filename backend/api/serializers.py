@@ -1,14 +1,10 @@
 from rest_framework import serializers
-from .models import Item, Location
+from base.models import Item
 
-#takes django model database and turns it into json data
+#converts instances of our objects into json datatype so Response 
+#object can understand
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ('__all__')
-
-class LocationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Location
-        fields = ('__all__')
+        fields = '__all__'
