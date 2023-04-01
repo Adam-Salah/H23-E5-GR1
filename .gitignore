@@ -11,10 +11,10 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules/*
-!node_modules/react-dnd
-!node_modules/react-dnd-html5-backend
+node_modules
 bower_components
+package-lock.json
+package.json
 
 *.sublime*
 
