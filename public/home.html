@@ -5,9 +5,8 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="styles/main.css">
-    <script src="../dist/template.js"></script>
 </head>
-<body onload="loadHeader()">
+<body>
 <div id="banner"></div>
 <div>
     <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In mollitia porro quod totam? Dolorum, eius expedita
@@ -213,4 +212,8 @@
 </div>
 
 </body>
+<script>$(function () {
+    $('#banner').load('./template_banner.html')
+});
+</script>
 </html>

@@ -5,12 +5,11 @@
     <title>Title</title>
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="../dist/template.js"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body onload="loadHeader()">
+<body>
 <div id="banner"></div>
 <div class="browsing_container">
     <div class="browse_tabs">
@@ -33,7 +32,11 @@
     <div class="view_tab" id="view_tab"></div>
 </div>
 
+</body>
+<script>$(function () {
+    $('#banner').load('./template_banner.html')
+});
+</script>
 <script src="../dist/browse.js" type="text/babel" data-type="module"></script>
 
-</body>
 </html>

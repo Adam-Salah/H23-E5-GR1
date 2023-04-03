@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body onload="loadHeader()">
+<body>
 <div id="banner"></div>
 <div class="sidebar-left">
     <div id="led"></div>
@@ -18,7 +18,11 @@
 </div>
 <div id="main"></div>
 
-<script src="../dist/project.js"></script>
-<script src="../dist/template.js"></script>
 </body>
+<script>$(function () {
+    $('#banner').load('./template_banner.html')
+});
+</script>
+<script src="../dist/project.js"></script>
+
 </html>
