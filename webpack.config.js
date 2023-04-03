@@ -7,8 +7,7 @@ module.exports = {
         index: './src/index.js',
         login: './src/login.js',
         project: './src/project.js',
-        template: './src/template.js',
-        led: './src/component_led.js'
+        component_led: './src/component_led.js',
     },
     module: {
         rules: [
