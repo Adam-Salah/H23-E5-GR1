@@ -1,4 +1,4 @@
-export default function Led(key) {
+export default function Component_led(key) {
     return (
         React.createElement(
             "div",

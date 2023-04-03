@@ -1,4 +1,4 @@
-import Led from "../components/led.js";
+import Component_led from "./component_led.js";
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 
@@ -15,7 +15,7 @@ let components = [];
 for (let i = 0; i < 10; i++) {
     let key = Math.floor(Math.random() * 1000000);
     components.push(React.createElement(
-        Led,
+        Component_led,
         {key: key},
         null
     ));
@@ -29,7 +29,7 @@ container.render(React.createElement(
     Container,
     null,
     React.createElement(
-        Led,
+        Component_led,
         null,
         null
     )
