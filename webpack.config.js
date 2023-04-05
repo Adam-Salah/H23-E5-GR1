@@ -2,12 +2,13 @@ const path = require('path');
 
 module.exports = {
     mode: "development",
+    context: path.resolve(__dirname, 'src'),
     entry: {
-        browse: './src/browse.js',
-        index: './src/index.js',
-        login: './src/login.js',
-        project: './src/project.js',
-        component_led: './src/component_led.js',
+        browse: './browse.js',
+        component_led: './component_led.js',
+        constantes: './constantes.js',
+        login: './login.js',
+        project: './project.js'
     },
     module: {
         rules: [
