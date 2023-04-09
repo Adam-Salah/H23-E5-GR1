@@ -1,3 +1,5 @@
+
+
 class Component{
     constructor(type, positionX, positionY, size){
         this.type = type;
@@ -56,3 +58,20 @@ class Port {
   }
 
 
+
+//======================================= I WANT THIS TO BE IN ANOTHER FILE BUT IDK HOW ======================================================
+
+// Define a Component class with properties for the component type, value, and connections
+var circuit = [];
+
+function addResistor(){
+    const resistor = document.getElementById("resistor");
+
+    resistor.addEventListener("click", function(event) {
+
+        const resistance = event.target.getAttribute("resistance");
+        circuit.push(new Resistor(10, 10, resistance))
+        console.log(circuit);
+
+    });
+}
