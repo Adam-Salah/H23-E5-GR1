@@ -1,7 +1,11 @@
+
+const passwordButton = document.getElementById("passwordButton")
+passwordButton.addEventListener("click", showPassword)
+
 function showPassword() {
-    passwordBox = document.getElementById("password");
-    showButtonText = document.getElementById("showButtonText")
-    showButtonImage = document.getElementById("showButtonImage")
+    let passwordBox = document.getElementById("password");
+    let showButtonText = document.getElementById("showButtonText")
+    let showButtonImage = document.getElementById("showButtonImage")
     if (passwordBox.type === "password") {
         passwordBox.type = "text";
         showButtonText.textContent = "Hide password"

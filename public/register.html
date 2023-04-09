@@ -17,14 +17,17 @@
         <input type="text" id="email" name="email"><br>
         <label for="password">Password</label><br>
         <input type="password" id="password" name="password">
-        <button type="button"  onclick="showPassword()">
+        <button type="button" id="passwordButton">
             <img id="showButtonImage" src="ressources/icons/eye-off.svg" alt="Show password"></button>
-        <div id="showButtonText"> Show password </div>
+        <div id="showButtonText"> Show password</div>
         <input type="submit" class="submit" value="Register">
     </form>
 </div>
 
 </body>
-<script src="../dist/login.js"></script>
-<script src="../dist/project.js"></script>
+<script>$(function () {
+    $('#banner').load('./template_banner.html')
+});
+</script>
+<script src="../dist/password.js"></script>
 </html>
