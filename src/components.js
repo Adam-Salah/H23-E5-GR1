@@ -1,4 +1,6 @@
-
+const sourceSize = 10;
+const resistorSize = 20;
+const capacitorSize = 30;
 
 class Component{
     constructor(type, positionX, positionY, size){
@@ -13,21 +15,21 @@ class Component{
 }
 class Source extends Component {
     constructor(positionX, positionY, voltage) {
-      super("Source", positionX, positionY, 100);
+      super("Source", positionX, positionY, sourceSize);
       this.voltage = voltage;
     }
   }
 
 class Resistor extends Component {
     constructor(positionX, positionY, resistance) {
-      super("Resistor", positionX, positionY, 100);
+      super("Resistor", positionX, positionY, resistorSize);
       this.resistance = resistance;
     }
   }
 
 class Capacitor extends Component {
     constructor(positionX, positionY, capacitance) {
-      super("Capacitor", positionX, positionY, 100);
+      super("Capacitor", positionX, positionY, capacitorSize);
       this.capacitance = capacitance;
     }
   }
@@ -57,21 +59,38 @@ class Port {
     }
   }
 
-
-
 //======================================= I WANT THIS TO BE IN ANOTHER FILE BUT IDK HOW ======================================================
 
-// Define a Component class with properties for the component type, value, and connections
 var circuit = [];
 
+function addSource(){
+    var resistor = document.getElementById("source");
+
+    resistor.addEventListener("click", function(event) {
+        var voltage = event.target.getAttribute("voltage");
+        circuit.push(new Source(20, 20, voltage))
+        console.log(circuit);
+        console.log(voltage);
+    });
+}
+
 function addResistor(){
-    const resistor = document.getElementById("resistor");
+    var resistor = document.getElementById("resistor");
 
     resistor.addEventListener("click", function(event) {
 
-        const resistance = event.target.getAttribute("resistance");
+        var resistance = event.target.getAttribute("resistance");
         circuit.push(new Resistor(10, 10, resistance))
         console.log(circuit);
-
+        console.log(resistance);
     });
+}
+
+function deleteComponent(component){
+    circuit.splice(circuit.indexOf(component), 1);
+}
+
+function deleteCircuit(){
+    circuit = [];
+    console.log(circuit);
 }
