@@ -8,7 +8,8 @@ module.exports = {
         component_led: './component_led.js',
         constantes: './constantes.js',
         login: './login.js',
-        project: './project.js'
+        project: './project.js',
+        components: './components',
     },
     module: {
         rules: [
