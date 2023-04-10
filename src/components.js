@@ -59,7 +59,7 @@ class Port {
     }
   }
 
-//======================================= I WANT THIS TO BE IN ANOTHER FILE BUT IDK HOW ======================================================
+//===================== I WANT THIS TO BE IN ANOTHER FILE BUT IDK HOW =================
 
 var circuit = [];
 
@@ -78,7 +78,6 @@ function addResistor(){
     var resistor = document.getElementById("resistor");
 
     resistor.addEventListener("click", function(event) {
-
         var resistance = event.target.getAttribute("resistance");
         circuit.push(new Resistor(10, 10, resistance))
         console.log(circuit);
