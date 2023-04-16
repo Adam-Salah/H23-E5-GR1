@@ -4,17 +4,20 @@ module.exports = {
     mode: "development",
     context: path.resolve(__dirname, 'src'),
     entry: {
+
+        // adam
         browse: './browse.js',
         component_led: './component_led.js',
         constantes: './constantes.js',
- 9th-april
         login: './login.js',
         project: './project.js',
-        components: './components',
-
         password: './password.js',
-        project: './project.js'
- main
+        project: './project.js',
+
+        // ak
+        components: './components',
+        test_main: './test_main.js' // for testing, delete later
+ 
     },
     module: {
         rules: [
