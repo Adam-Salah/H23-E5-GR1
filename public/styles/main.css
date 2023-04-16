@@ -118,14 +118,15 @@
     display: block;
 }
 
-.browse_tabs {
+.tabs_list {
     margin-top: 1vh;
+    transform: translateX(-10%);
     width: 25vw;
     position: fixed;
     float: left;
 }
 
-.browse_tabs div {
+.tabs {
     --height: Calc((100vh - 13vh)/5);
     border: solid black .2vh;
     height: var(--height);
@@ -135,7 +136,7 @@
     white-space: nowrap;
 }
 
-.view_tab {
+.project_list {
     position: relative;
     left: 25vw;
     width: 70vw;
@@ -144,7 +145,7 @@
     margin-top: 1vh;
 }
 
-.view_tab div {
+.project_list div {
     position: relative;
     float: left;
     margin: 8vh 3vw;
@@ -154,7 +155,7 @@
     border-radius: 10%;
 }
 
-.view_tab div div {
+.project_list div div {
     height: 10vw;
     width: 10vw;
 }

@@ -9,13 +9,13 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./login.js":
-/*!******************!*\
-  !*** ./login.js ***!
-  \******************/
+/***/ "./password.js":
+/*!*********************!*\
+  !*** ./password.js ***!
+  \*********************/
 /***/ (() => {
 
-eval("function showPassword() {\n  passwordBox = document.getElementById(\"password\");\n  showButtonText = document.getElementById(\"showButtonText\");\n  showButtonImage = document.getElementById(\"showButtonImage\");\n  if (passwordBox.type === \"password\") {\n    passwordBox.type = \"text\";\n    showButtonText.textContent = \"Hide password\";\n    showButtonImage.src = \"ressources/icons/eye.svg\";\n  } else if (passwordBox.type === \"text\") {\n    passwordBox.type = \"password\";\n    showButtonText.textContent = \"Show password\";\n    showButtonImage.src = \"ressources/icons/eye-off.svg\";\n  }\n}\n\n//# sourceURL=webpack:///./login.js?");
+eval("var passwordButton = document.getElementById(\"passwordButton\");\npasswordButton.addEventListener(\"click\", showPassword);\nfunction showPassword() {\n  var passwordBox = document.getElementById(\"password\");\n  var showButtonText = document.getElementById(\"showButtonText\");\n  var showButtonImage = document.getElementById(\"showButtonImage\");\n  if (passwordBox.type === \"password\") {\n    passwordBox.type = \"text\";\n    showButtonText.textContent = \"Hide password\";\n    showButtonImage.src = \"ressources/icons/eye.svg\";\n  } else if (passwordBox.type === \"text\") {\n    passwordBox.type = \"password\";\n    showButtonText.textContent = \"Show password\";\n    showButtonImage.src = \"ressources/icons/eye-off.svg\";\n  }\n}\n\n//# sourceURL=webpack:///./password.js?");
 
 /***/ })
 
@@ -26,7 +26,7 @@ eval("function showPassword() {\n  passwordBox = document.getElementById(\"passw
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./login.js"]();
+/******/ 	__webpack_modules__["./password.js"]();
 /******/ 	
 /******/ })()
 ;

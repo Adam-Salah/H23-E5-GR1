@@ -7,9 +7,14 @@ module.exports = {
         browse: './browse.js',
         component_led: './component_led.js',
         constantes: './constantes.js',
+ 9th-april
         login: './login.js',
         project: './project.js',
         components: './components',
+
+        password: './password.js',
+        project: './project.js'
+ main
     },
     module: {
         rules: [
