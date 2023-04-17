@@ -1,42 +1,46 @@
+
 const sourceSize = 10;
 const resistorSize = 20;
 const capacitorSize = 30;
 
-class Component{
-    constructor(type, positionX, positionY, size){
+export class Component{
+    constructor(id, type, positionX, positionY, size){
+        this.id = id;
         this.type = type;
         this.positionX = positionX;
         this.positionY = positionY;
         this.size = size;
+        /*
+        this.ports = []
 
-        var port1 = new Port("Negative", positionX-50, positionY-50, null)
-        var port2 = new Port("Positive", positionX-50, positionY-50, null)
+        this.ports.push(new Port(positionX-50, positionY-50, null))
+        this.ports.push(new Port(positionX-50, positionY-50, null))
+        */
     }
 }
-class Source extends Component {
+export class Source extends Component {
     constructor(positionX, positionY, voltage) {
       super("Source", positionX, positionY, sourceSize);
       this.voltage = voltage;
     }
   }
 
-class Resistor extends Component {
+export class Resistor extends Component {
     constructor(positionX, positionY, resistance) {
       super("Resistor", positionX, positionY, resistorSize);
       this.resistance = resistance;
     }
   }
 
-class Capacitor extends Component {
+export class Capacitor extends Component {
     constructor(positionX, positionY, capacitance) {
       super("Capacitor", positionX, positionY, capacitorSize);
       this.capacitance = capacitance;
     }
   }
 
-class Port {
-    constructor(polarity, positionX, positionY, connectedTo) {
-      this.polarity = polarity;
+export class Port {
+    constructor(positionX, positionY, connectedTo) {
       this.positionX = positionX;
       this.positionY = positionY;
       this.connectedTo = connectedTo; // instance of another port
@@ -58,9 +62,49 @@ class Port {
         return this.connectedTo !== null; // if connectedTo isnt null, return true
     }
   }
+  
 
-//===================== I WANT THIS TO BE IN ANOTHER FILE BUT IDK HOW =================
+//===================== THIS WILL BE IN ANOTHER FILE =================
 
+
+export class Circuit {
+
+  constructor() {
+    this.listOfComponents = []; 
+  }
+
+  add(component) {
+    this.listOfComponents.push(component);
+  }
+
+  delete(component) {
+    if (this.listOfComponents.indexOf(component) !== -1) {
+      this.listOfComponents.splice(index, 1);
+    }
+  }
+
+  connect(port1, port2) {
+    port1.connectedTo.push(port2);
+    port2.connectedTo.push(port1);
+  }
+
+  disconnect(port1, port2) {
+    index1 = port1.connectedTo.indexOf(port1);
+    index2 = port2.connectedTo.indexOf(port2);
+    if (index1 !== -1 && index2 !== -1) {
+      port1.connectedTo.splice(port1, 1);
+      port2.connectedTo.splice(port2, 1);
+    }
+  }
+
+  deleteCircuit(){
+    this.listOfComponents = [];
+  }
+}
+
+//===================== THIS WILL BE IN ANOTHER FILE =================
+
+/*
 var circuit = [];
 
 function addSource(){
@@ -93,3 +137,18 @@ function deleteCircuit(){
     circuit = [];
     console.log(circuit);
 }
+*/
+
+
+//===================== CALCULATIONS =================
+
+/*
+
+Kirchhoff's laws : 
+Current law -> current going in - current going out = 0
+Voltage law -> sum of the difference of potentials inside a loop = 0
+
+Ohm's law :
+I = difference of potential/R
+
+*/
