@@ -1,20 +1,21 @@
 import React from "react";
-import {useDrag} from "react-dnd";
 import {ItemTypes} from "./constantes";
+import {useDrag} from "react-dnd";
 
-function Component_led(key) {
-    const [{isDragging}, drag] = useDrag({
+function Component_led() {
+    const [{isDragging}, drag] = useDrag(() => ({
         type: ItemTypes.LED,
         collect: monitor => ({
-            isDragging: monitor.isDragging()
+            isDragging: !!monitor.isDragging()
         })
-    })
+    }))
 
     if (!isDragging) {
         return (
-            <div key={key} ref={drag} className={'led'}>
+            <div ref={drag}>
                 💡
-            </div>)
+            </div>
+        )
     }
 }
 

@@ -97,7 +97,7 @@
 
 }
 
-.card form input#username,#email,#password {
+.card form input#username, #email, #password {
     font-size: 1em;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -127,7 +127,7 @@
 }
 
 .tabs {
-    --height: Calc((100vh - 13vh)/5);
+    --height: Calc((100vh - 13vh) / 5);
     border: solid black .2vh;
     height: var(--height);
     line-height: var(--height);
@@ -170,6 +170,7 @@
     border: 0.1vw black solid;
     border-radius: 20%;
     padding: 2vh;
+    background-color: white;
 }
 
 .led {
@@ -180,9 +181,15 @@
 
 .grid {
     position: relative;
-    left: 50vw;
-    top: 50vh;
-    height: 20vw;
-    width: 20vw;
-    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(10, min-content);
+}
+
+.case {
+    --caseHeight: 200px;
+    height: var(--caseHeight);
+    width: var(--caseHeight);
+    border: black solid 1px;
+    background-color: grey;
+
 }

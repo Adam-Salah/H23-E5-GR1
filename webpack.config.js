@@ -11,8 +11,6 @@ module.exports = {
         constantes: './constantes.js',
         password: './password.js',
         project: './project.js',
-        password: './password.js',
-        project: './project.js',
 
         // ak
         components: './components',
