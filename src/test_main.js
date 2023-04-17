@@ -1,4 +1,5 @@
-import { Circuit, Component, Source, Resistor, Capacitor, Port } from './components.js';
+import { Component, Source, Resistor, Capacitor, Port } from './components.js';
+import { Circuit } from './circuit.js';
 
 var circuit = new Circuit();
 
@@ -33,19 +34,24 @@ var connect = document.getElementById("connect_button");
 connect.addEventListener("click", function(event) {
     circuit.connect(circuit.listOfComponents[0].ports[0], 
                     circuit.listOfComponents[1].ports[1])
+    
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+            console.log(circuit.listOfComponents[i].ports[j].connectedTo);
+        }
+    }
+});
 
-    circuit.listOfComponents[0].ports[0].push(new Port(10, 10, []))
-
-    console.log(circuit, "connected");
-    console.log("component 1's port 1's connected to : "+
-        circuit.listOfComponents[0].ports[0])
-    console.log("component 1's port 2's connected to : "+
-        circuit.listOfComponents[0].ports[1])
-    console.log("component 2's port 1's connected to : "+
-        circuit.listOfComponents[1].ports[0])
-    console.log("component 2's port 2's connected to : "+
+var disconnect = document.getElementById("disconnect_button");
+disconnect.addEventListener("click", function(event) {
+    circuit.disconnect(circuit.listOfComponents[0].ports[0], 
         circuit.listOfComponents[1].ports[1])
 
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+            console.log(circuit.listOfComponents[i].ports[j].connectedTo);
+        }
+    }
 });
 
 

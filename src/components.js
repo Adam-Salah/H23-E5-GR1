@@ -11,8 +11,8 @@ export class Component{
         this.size = size;
         
         this.ports = [
-          new Port(positionX-50, positionY-50, []), // null -> connected to nothing
-          new Port(positionX-50, positionY-50, []),
+          new Port(positionX-50, positionY-50, new Set()), // null -> connected to nothing
+          new Port(positionX-50, positionY-50, new Set()),
         ]
     }
 }
@@ -38,7 +38,7 @@ export class Capacitor extends Component {
   }
 
 export class Port {
-    constructor(positionX, positionY, connectedTo = []) {
+    constructor(positionX, positionY, connectedTo) {
       this.positionX = positionX;
       this.positionY = positionY;
       this.connectedTo = connectedTo; // instance of other ports
@@ -50,12 +50,6 @@ export class Port {
         port.connectedTo = this.port // port 2 is connected to port 1
     }
     */
-
-    connectTo(port) {
-      this.connectedTo.push(port) //port 1 is connected to port 2
-      port.connectedTo.push(this.port) // port 2 is connected to port 1
-      console.log(this.connectedTo)
-  }
 
     disconnect() {
         if(isConnected) {
@@ -73,12 +67,11 @@ export class Port {
     }
 
     toString() {
-      return `${this.connectedTo}`;
+      return `un dwadawd`;
     }
   }
-  
-//===================== THIS WILL BE IN ANOTHER FILE =================
 
+  
 export class Circuit {
 
   constructor() {
@@ -95,73 +88,28 @@ export class Circuit {
     }
   }
 
-  /*
-  connect(port1, port2) {
-    port1.connectedTo.push(port2);
-    port2.connectedTo.push(port1);
-    console.log("port 1 is connected to port 2")
-  }
-  */
 
   connect(port1, port2) {
-    port1.connectTo(port2);
-    console.log("port 1 is connected to port 2")
+    port1.connectedTo.add(port2)
+    port2.connectedTo.add(port1)
   }
 
   disconnect(port1, port2) {
-    index1 = port1.connectedTo.indexOf(port1);
-    index2 = port2.connectedTo.indexOf(port2);
-    if (index1 !== -1 && index2 !== -1) {
-      port1.connectedTo.splice(port1, 1);
-      port2.connectedTo.splice(port2, 1);
-    }
-    console.log("port 1 is disconnected to port 2")
+    if (port1.connectedTo.has(port2))
+        port1.connectedTo.delete(port2)
+    else
+        console.log("port 1 isnt connected to port 2")
 
+    if (port2.connectedTo.has(port1))
+        port2.connectedTo.delete(port1)
+    else
+        console.log("port 2 isnt connected to port 1")
   }
 
   deleteCircuit(){
     this.listOfComponents = [];
   }
 }
-
-//===================== THIS WILL BE IN ANOTHER FILE =================
-
-/*
-var circuit = [];
-
-function addSource(){
-    var resistor = document.getElementById("source");
-
-    resistor.addEventListener("click", function(event) {
-        var voltage = event.target.getAttribute("voltage");
-        circuit.push(new Source(20, 20, voltage))
-        console.log(circuit);
-        console.log(voltage);
-    });
-}
-
-function addResistor(){
-    var resistor = document.getElementById("resistor");
-
-    resistor.addEventListener("click", function(event) {
-        var resistance = event.target.getAttribute("resistance");
-        circuit.push(new Resistor(10, 10, resistance))
-        console.log(circuit);
-        console.log(resistance);
-    });
-}
-
-function deleteComponent(component){
-    circuit.splice(circuit.indexOf(component), 1);
-}
-
-function deleteCircuit(){
-    circuit = [];
-    console.log(circuit);
-}
-*/
-
-
 //===================== CALCULATIONS =================
 
 /*
