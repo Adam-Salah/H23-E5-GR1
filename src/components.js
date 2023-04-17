@@ -1,4 +1,3 @@
-
 const sourceSize = 10;
 const resistorSize = 20;
 const capacitorSize = 30;
@@ -10,12 +9,11 @@ export class Component{
         this.positionX = positionX;
         this.positionY = positionY;
         this.size = size;
-        /*
-        this.ports = []
-
-        this.ports.push(new Port(positionX-50, positionY-50, null))
-        this.ports.push(new Port(positionX-50, positionY-50, null))
-        */
+        
+        this.ports = [
+          new Port(positionX-50, positionY-50, []), // null -> connected to nothing
+          new Port(positionX-50, positionY-50, []),
+        ]
     }
 }
 export class Source extends Component {
@@ -40,16 +38,24 @@ export class Capacitor extends Component {
   }
 
 export class Port {
-    constructor(positionX, positionY, connectedTo) {
+    constructor(positionX, positionY, connectedTo = []) {
       this.positionX = positionX;
       this.positionY = positionY;
-      this.connectedTo = connectedTo; // instance of another port
+      this.connectedTo = connectedTo; // instance of other ports
     }
     
+    /*
     connectTo(port) {
         this.connectedTo = port; // port 1 is connected to port 2
         port.connectedTo = this.port // port 2 is connected to port 1
     }
+    */
+
+    connectTo(port) {
+      this.connectedTo.push(port) //port 1 is connected to port 2
+      port.connectedTo.push(this.port) // port 2 is connected to port 1
+      console.log(this.connectedTo)
+  }
 
     disconnect() {
         if(isConnected) {
@@ -61,11 +67,17 @@ export class Port {
     isConnected(){
         return this.connectedTo !== null; // if connectedTo isnt null, return true
     }
+
+    getConnections(){
+        return this.connectedTo;
+    }
+
+    toString() {
+      return `${this.connectedTo}`;
+    }
   }
   
-
 //===================== THIS WILL BE IN ANOTHER FILE =================
-
 
 export class Circuit {
 
@@ -83,9 +95,17 @@ export class Circuit {
     }
   }
 
+  /*
   connect(port1, port2) {
     port1.connectedTo.push(port2);
     port2.connectedTo.push(port1);
+    console.log("port 1 is connected to port 2")
+  }
+  */
+
+  connect(port1, port2) {
+    port1.connectTo(port2);
+    console.log("port 1 is connected to port 2")
   }
 
   disconnect(port1, port2) {
@@ -95,6 +115,8 @@ export class Circuit {
       port1.connectedTo.splice(port1, 1);
       port2.connectedTo.splice(port2, 1);
     }
+    console.log("port 1 is disconnected to port 2")
+
   }
 
   deleteCircuit(){
