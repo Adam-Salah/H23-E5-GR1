@@ -15,8 +15,8 @@ module.exports = {
         project: './project.js',
 
         // ak
-        components: './components',
-        test_main: './test_main.js' // for testing, delete later
+        components: './components.js',
+        test_main: './test_main.js', // for testing, delete later
  
     },
     module: {
