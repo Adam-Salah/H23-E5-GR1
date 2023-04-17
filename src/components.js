@@ -10,11 +10,12 @@ export class Component{
         this.positionX = positionX;
         this.positionY = positionY;
         this.size = size;
-
+        /*
         this.ports = []
 
         this.ports.push(new Port(positionX-50, positionY-50, null))
         this.ports.push(new Port(positionX-50, positionY-50, null))
+        */
     }
 }
 export class Source extends Component {
@@ -38,7 +39,7 @@ export class Capacitor extends Component {
     }
   }
 
-  export class Port {
+export class Port {
     constructor(positionX, positionY, connectedTo) {
       this.positionX = positionX;
       this.positionY = positionY;
