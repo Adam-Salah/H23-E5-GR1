@@ -9,7 +9,7 @@ module.exports = {
         browse: './browse.js',
         component_led: './component_led.js',
         constantes: './constantes.js',
-        login: './login.js',
+        password: './password.js',
         project: './project.js',
         password: './password.js',
         project: './project.js',
