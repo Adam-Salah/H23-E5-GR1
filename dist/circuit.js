@@ -10,6 +10,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./circuit.js":
+/*!********************!*\
+  !*** ./circuit.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Circuit\": () => (/* binding */ Circuit)\n/* harmony export */ });\n/* harmony import */ var _components_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components.js */ \"./components.js\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }, _typeof(obj); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _toPropertyKey(arg) { var key = _toPrimitive(arg, \"string\"); return _typeof(key) === \"symbol\" ? key : String(key); }\nfunction _toPrimitive(input, hint) { if (_typeof(input) !== \"object\" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || \"default\"); if (_typeof(res) !== \"object\") return res; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (hint === \"string\" ? String : Number)(input); }\n\nvar Circuit = /*#__PURE__*/function () {\n  function Circuit() {\n    _classCallCheck(this, Circuit);\n    this.listOfComponents = [];\n  }\n  _createClass(Circuit, [{\n    key: \"add\",\n    value: function add(component) {\n      this.listOfComponents.push(component);\n    }\n  }, {\n    key: \"delete\",\n    value: function _delete(component) {\n      if (this.listOfComponents.indexOf(component) !== -1) {\n        this.listOfComponents.splice(index, 1);\n      }\n    }\n  }, {\n    key: \"connect\",\n    value: function connect(port1, port2) {\n      port1.connectedTo.add(port2);\n      port2.connectedTo.add(port1);\n    }\n  }, {\n    key: \"disconnect\",\n    value: function disconnect(port1, port2) {\n      if (port1.connectedTo.has(port2)) port1.connectedTo[\"delete\"](port2);else console.log(\"port 1 isnt connected to port 2\");\n      if (port2.connectedTo.has(port1)) port2.connectedTo[\"delete\"](port1);else console.log(\"port 2 isnt connected to port 1\");\n    }\n  }, {\n    key: \"deleteCircuit\",\n    value: function deleteCircuit() {\n      this.listOfComponents = [];\n    }\n  }]);\n  return Circuit;\n}();\n// ========== CALCULATIONS ===========\n\n/*\r\n\r\nKirchhoff's laws : \r\nCurrent law -> current going in - current going out = 0\r\nVoltage law -> sum of the difference of potentials inside a loop = 0\r\n\r\nOhm's law :\r\nI = V/R\r\n\r\n\r\nCALCULATING CURRENT : \r\n- To find the current, we must know a circuit's total voltage and total resistance.\r\n- The total voltage V is found by simply looking at he source.\r\nThe total resistance R is calculated by simplifying the circuit (series/parallel)\r\nuntil only one resistor remains.\r\n- We then use Ohm's law to find the current\r\n\r\nCALCULATING DIFFERENCE OF VOLTAGE AT 2 POINTS\r\n- \r\n*/\n\n//# sourceURL=webpack:///./circuit.js?");
+
+/***/ }),
+
 /***/ "./components.js":
 /*!***********************!*\
   !*** ./components.js ***!
@@ -22,8 +32,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /******/ 	});
 /************************************************************************/
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
@@ -59,8 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./components.js"](0, __webpack_exports__, __webpack_require__);
+/******/ 	var __webpack_exports__ = __webpack_require__("./circuit.js");
 /******/ 	
 /******/ })()
 ;

@@ -36,10 +36,27 @@ export class Circuit {
     deleteCircuit(){
         this.listOfComponents = [];
     }
-
+}
 // ========== CALCULATIONS ===========
 
-    calculatePotential(){
+/*
 
-    }
-}
+Kirchhoff's laws : 
+Current law -> current going in - current going out = 0
+Voltage law -> sum of the difference of potentials inside a loop = 0
+
+Ohm's law :
+I = V/R
+
+
+CALCULATING CURRENT : 
+- To find the current, we must know a circuit's total voltage and total resistance.
+- The total voltage V is found by simply looking at he source.
+The total resistance R is calculated by simplifying the circuit (series/parallel)
+until only one resistor remains.
+- We then use Ohm's law to find the current
+
+CALCULATING DIFFERENCE OF VOLTAGE AT 2 POINTS
+- 
+*/
+
