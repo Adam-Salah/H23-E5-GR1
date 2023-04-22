@@ -70,18 +70,3 @@ export class Port {
       return `un dwadawd`;
     }
   }
-
-  
-
-//===================== CALCULATIONS =================
-
-/*
-
-Kirchhoff's laws : 
-Current law -> current going in - current going out = 0
-Voltage law -> sum of the difference of potentials inside a loop = 0
-
-Ohm's law :
-I = difference of potential/R
-
-*/
