@@ -88,7 +88,6 @@
 .card form input {
     position: relative;
     width: 150%;
-
     left: -25%;
     background-color: white;
 }
@@ -192,4 +191,11 @@
     border: black solid 1px;
     background-color: grey;
 
+}
+
+.case div {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
