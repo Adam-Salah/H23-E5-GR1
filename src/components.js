@@ -10,10 +10,18 @@ export class Component{
         this.positionY = positionY;
         this.size = size;
         
+        // each component will have 2 ports that can each connect  
+        // to an infinit amount of ports
+
+        /*
         this.ports = [
-          new Port(positionX-50, positionY-50, new Set()), // null -> connected to nothing
-          new Port(positionX-50, positionY-50, new Set()),
+          new Port(new Set()),
+          new Port(new Set()),
         ]
+        */
+
+        //this.port = new Port(new Set());
+        this.connectedTo = new Set();
     }
 }
 export class Source extends Component {
@@ -37,19 +45,18 @@ export class Capacitor extends Component {
     }
   }
 
+/*
 export class Port {
-    constructor(positionX, positionY, connectedTo) {
-      this.positionX = positionX;
-      this.positionY = positionY;
+    constructor(connectedTo) {
       this.connectedTo = connectedTo; // set of other ports
     }
+*/
     
     /*
     connectTo(port) {
         this.connectedTo = port; // port 1 is connected to port 2
         port.connectedTo = this.port // port 2 is connected to port 1
     }
-    */
 
     disconnect() {
         if(isConnected) {
@@ -69,4 +76,6 @@ export class Port {
     toString() {
       return `un dwadawd`;
     }
-  }
+
+    */
+  

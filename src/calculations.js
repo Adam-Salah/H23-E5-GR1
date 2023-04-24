@@ -35,16 +35,27 @@ class Calculator {
         let resistors = [];
         for (let i = 0; i < circuit.listOfComponents.length; i++) {
             if (circuit[i] instanceof Resistor) {
-              resistors.push(circuit[i]);
+                resistors.push(circuit[i]);
             }
         }
 
         // series
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            for (let j = 0; j < circuit.listOfComponents.length; j++) {
-                if (circuit[i].port.connectedTo === circuit[j].port /* and nothing else */){
-                    // replace these resistors by 1 equivalent resistor inside resistors
-                }
+        for (let i = 0; i < resistors.length; i++) {
+            // if connectedTo only has 1 port connected, it means its in series
+            let resistor = resistors[i]; // resistor object 
+
+            if (resistor.connectedTo.size === 1){ 
+
+                let connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
+
+                if(resistor.connectedTo === connectedTo)
+                    console.log("they are indeed in series")
+
+                // replace these resistors by 1 equivalent resistor inside resistors
+                resistors.splice(i, 1);
+                resistors.splice(resistors.indexOf(connectedTo), 1);
+                resistors.push(new Resistor(0, 0, resistor.resistance + connectedTo.resistance))
+
             }
         }
 
