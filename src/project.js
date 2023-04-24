@@ -2,7 +2,7 @@ import Component_led from "./component_led.js";
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import ReactDOM from "react-dom/client";
-import React from "react";
+import React, {useState} from "react";
 import {useDrop} from "react-dnd";
 import {ItemTypes} from "./constantes";
 
@@ -15,13 +15,14 @@ function Container() {
     )
 }
 
+const container = ReactDOM.createRoot(document.getElementById("main"));
+container.render(<Container/>);
+
 function SideBar() {
     let id = React.useId;
     return (
         <div className={'sidebar-left'}>
-            <div className={'led'}>
-                <Component_led key={id} id={id}/>
-            </div>
+            <Component_led key={id} id={id}/>
         </div>
     )
 }
@@ -42,33 +43,34 @@ function Grid() {
 }
 
 function Case({id, x, y}) {
-    const [{ isOver }, drop] = useDrop(
+    const [type, setType] = useState()
+    const [{isOver, didDrop}, drop] = useDrop(
         () => ({
             accept: ItemTypes.LED,
-            drop: () => moveComponent(x, y),
-            collect: monitor => ({
-                isOver: !!monitor.isOver()
+            drop: (item,) => setType(item.itemType),
+            collect: (monitor) => ({
+                isOver: monitor.isOver(),
+                didDrop: monitor.didDrop(),
             })
-        }), [x,y]
+        })
     )
 
     let color
     if (isOver) {
         color = "yellow"
-    } else
-        color = "grey"
+    } else if (didDrop) {
+        color = "blue"
+    }
+
+    let component
+    switch (type) {
+        case "led": component = <Component_led key={React.useId} id={id + ";child"}/>
+            break;
+    }
 
     return (
         <div ref={drop} className={'case'} id={id} data-x={x} data-y={y} style={{backgroundColor: color}}>
+            {component}
         </div>
     )
 }
-
-function moveComponent(x, y) {
-    const drop = ReactDOM.createRoot(document.getElementById(x + ';' + y));
-    drop.render( <Component_led key={React.useId}/>);
-    console.log("drop");
-}
-
-const container = ReactDOM.createRoot(document.getElementById("main"));
-container.render(<Container/>);
