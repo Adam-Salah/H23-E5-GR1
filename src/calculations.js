@@ -33,22 +33,42 @@ class Calculator {
 
         // create an array of all resistors
         let resistors = [];
+
         for (let i = 0; i < circuit.listOfComponents.length; i++) {
             if (circuit[i] instanceof Resistor) {
-              resistors.push(circuit[i]);
+                resistors.push(circuit[i]);
             }
         }
 
         // series
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            for (let j = 0; j < circuit.listOfComponents.length; j++) {
-                if (circuit[i].port.connectedTo === circuit[j].port /* and nothing else */){
-                    // replace these resistors by 1 equivalent resistor inside resistors
-                }
+        for (let i = 0; i < resistors.length; i++) {
+            // if connectedTo only has 1 port connected, it means its in series
+            var resistor = resistors[i]; // resistor object 
+
+            if (resistor.connectedTo.size === 1){ 
+
+                var connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
+
+                if(resistor.connectedTo === connectedTo)
+                    console.log("they are indeed in series")
+
+                // replace these resistors by 1 equivalent resistor inside resistors
+                resistors.splice(i, 1);
+                resistors.splice(resistors.indexOf(connectedTo), 1);
+
+                //two resistors in series
+                var newResistance = resistor.resistance + connectedTo.resistance;
+                var newResistor = new Resistor(0, 0, newResistance)
+                resistors.push(newResistor);
+
             }
         }
 
         // parallel
+
+        // two resistors are in parallel if both their ports are connected
+        // to the same two nodes
+
         for (let i = 0; i < circuit.listOfComponents.length; i++) {
             for (let j = 0; j < circuit.listOfComponents.length; j++) {
                 // if connected to two or more, it'l parallel

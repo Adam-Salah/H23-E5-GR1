@@ -17,6 +17,7 @@ module.exports = {
         // ak
         components: './components.js',
         circuit: './circuit.js',
+        calculations: './calculations.js',
         test_main: './test_main.js', // for testing, delete later
  
     },
