@@ -162,7 +162,7 @@
 /* Project */
 
 .sidebar-left {
-    position: absolute;
+    position: fixed;
     top: Calc(50% + 5.5vh);
     transform: translateY(-50%);
     left: 5vh;
@@ -185,7 +185,7 @@
 }
 
 .case {
-    --caseHeight: 200px;
+    --caseHeight: 100px;
     height: var(--caseHeight);
     width: var(--caseHeight);
     border: black solid 1px;

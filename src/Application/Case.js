@@ -16,7 +16,6 @@ function Case({id, x, y}) {
             })
         })
     )
-
     let color
     if (isOver) {
         color = "yellow"
