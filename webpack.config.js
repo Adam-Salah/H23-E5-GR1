@@ -17,8 +17,10 @@ module.exports = {
         './Application/Composantes/Composante': './Application/Composantes/Composante',
 
         // ak
-        components: './components',
-        test_main: './test_main.js' // for testing, delete later
+        components: './components.js',
+        circuit: './circuit.js',
+        calculations: './calculations.js',
+        test_main: './test_main.js', // for testing, delete later
  
     },
     module: {
