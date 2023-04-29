@@ -6,13 +6,15 @@ module.exports = {
     entry: {
 
         // adam
-        browse: './browse.js',
-        component_led: './component_led.js',
-        constantes: './constantes.js',
-        password: './password.js',
-        project: './project.js',
-        password: './password.js',
-        project: './project.js',
+        './Browse': './Browse',
+        './Login': './Login',
+        './Projet': './Projet',
+        './Application/Application': './Application/Application',
+        './Application/Case': './Application/Case',
+        './Application/Grille': './Application/Grille',
+        './Application/Constantes': './Application/Constantes',
+        './Application/Composantes/Led': './Application/Composantes/Led',
+        './Application/Composantes/Composante': './Application/Composantes/Composante',
 
         // ak
         components: './components.js',
