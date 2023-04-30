@@ -32,7 +32,7 @@ class Calculator {
     calculateResistance(circuit){
 
         // create an array of all resistors
-        let resistors = [];
+        var resistors = [];
 
         for (let i = 0; i < circuit.listOfComponents.length; i++) {
             if (circuit[i] instanceof Resistor) {
@@ -40,42 +40,61 @@ class Calculator {
             }
         }
 
-        // series
-        for (let i = 0; i < resistors.length; i++) {
-            // if connectedTo only has 1 port connected, it means its in series
-            var resistor = resistors[i]; // resistor object 
+        // SIMPLIFY CIRCUIT -> if series / if parallel
 
-            if (resistor.connectedTo.size === 1){ 
+        while(resistors.length > 1) {
+            
+            for (let i = 0; i < resistors.length; i++) {
 
-                var connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
+                // series
 
-                if(resistor.connectedTo === connectedTo)
-                    console.log("they are indeed in series")
+                // if connectedTo only has 1 port connected, it means its in series
+                var resistor = resistors[i]; // resistor object 
 
-                // replace these resistors by 1 equivalent resistor inside resistors
-                resistors.splice(i, 1);
-                resistors.splice(resistors.indexOf(connectedTo), 1);
+                if (resistor.connectedTo.size === 1){ 
 
-                //two resistors in series
-                var newResistance = resistor.resistance + connectedTo.resistance;
-                var newResistor = new Resistor(0, 0, newResistance)
-                resistors.push(newResistor);
+                    var connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
 
+                    if(resistor.connectedTo === connectedTo)
+                        console.log("they are indeed in series")
+
+                    // replace these resistors by 1 equivalent resistor inside resistors
+                    resistors.splice(i, 1);
+                    resistors.splice(resistors.indexOf(connectedTo), 1);
+
+                    //two resistors in series
+                    var newResistance = resistor.resistance + connectedTo.resistance;
+                    var newResistor = new Resistor(0, 0, newResistance)
+                    resistors.push(newResistor);
+
+                }
+
+                // parallel
+
+                // two resistors are in parallel if both their ports are connected
+                // to the same two nodes
+
+                if (resistor.connectedTo.size === 1){ 
+
+                    var connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
+
+                    if(resistor.connectedTo === connectedTo)
+                        console.log("they are indeed in series")
+
+                    // replace these resistors by 1 equivalent resistor inside resistors
+                    resistors.splice(i, 1);
+                    resistors.splice(resistors.indexOf(connectedTo), 1);
+
+                    //two resistors in parallel
+                    var newResistance = (1/resistor.resistance + 1/connectedTo.resistance)^(-1);
+                    var newResistor = new Resistor(0, 0, newResistance)
+                    resistors.push(newResistor);
+
+                }
             }
         }
 
-        // parallel
-
-        // two resistors are in parallel if both their ports are connected
-        // to the same two nodes
-
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            for (let j = 0; j < circuit.listOfComponents.length; j++) {
-                // if connected to two or more, it'l parallel
-            }
-        }
-
-        return resistance;
+        return resistors[0].resistance;
     }
 
     calculateVoltage(circuit){
