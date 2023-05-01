@@ -1,21 +1,37 @@
+import React from "react";
 import {useDrop} from "react-dnd";
 import {ItemTypes} from "./Constantes";
-import Led from "./Composantes/Led";
-import React, {useState} from "react";
+import Led from "./Composantes/Led.js";
 
-function Case({id, x, y}) {
+function Case({x, y, type, pushComponent, removeComponent}) {
 
-    const [type, setType] = useState()
+    let id = x.toString().concat(';', y.toString())
+
     const [{isOver, didDrop}, drop] = useDrop(
         () => ({
             accept: ItemTypes.LED,
-            drop: (item,) => setType(item.itemType),
+            drop: (item,) => newComponent(item.itemType, item.itemId),
             collect: (monitor) => ({
                 isOver: monitor.isOver(),
                 didDrop: monitor.didDrop()
             })
         })
     )
+
+    function newComponent(itemType, itemId) {
+        if(pushComponent(x, y, itemType)) {
+            removeComponent(itemId)
+        }
+    }
+
+    let component
+    switch (type) {
+        case "Led": component = <Led key={React.useId} x={x} y={y} />
+            break;
+        case undefined: component = null
+            break;
+    }
+
     let color
     if (isOver) {
         color = "yellow"
@@ -23,16 +39,8 @@ function Case({id, x, y}) {
         color = "blue"
     }
 
-    let component
-    switch (type) {
-        case "led": component = <Led key={React.useId}/>
-            break;
-        case undefined: component = null
-            break;
-    }
-
     return (
-        <div ref={drop} className={'case'} id={id} data-x={x} data-y={y} style={{backgroundColor: color}}>
+        <div ref={drop} className={'case'} id={id} style={{backgroundColor: color}}>
             {component}
         </div>
     )

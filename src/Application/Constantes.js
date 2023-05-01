@@ -1,3 +1,4 @@
 export const ItemTypes = {
-    LED: 'led'
+    LED: 'Led',
+    NULL: 'null'
 }

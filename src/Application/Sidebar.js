@@ -1,11 +1,10 @@
-import Led from "./Composantes/Led";
 import React from "react";
+import Led from "./Composantes/Led";
 
 function SideBar() {
-    let id = React.useId;
     return (
         <div className={'sidebar-left'}>
-            <Led key={id}/>
+            <Led key={React.useId}/>
         </div>
     )
 }
