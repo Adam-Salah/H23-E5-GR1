@@ -21,8 +21,10 @@ export class Component{
         */
 
         //this.port = new Port(new Set());
-        this.connectedToPortA = new Set();
-        this.connectedToPortB = new Set();
+        this.ports = [
+          new Port(new Set()),
+          new Port(new Set()),
+        ]
     }
 }
 export class Source extends Component {

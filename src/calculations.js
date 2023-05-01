@@ -30,20 +30,151 @@ class Calculator {
     }
 
     identifyNodes(circuit) {
-
         var nodes = new Set();
 
+        // iterate throught every component
         for (let component of circuit.listOfComponents) {
-            if (component.connectedToPortA.size > 1){
-                var node = new Set();
-                // add itself to the node
-                node.add(component);
-                // add everything that's connected to component to the node
-                for(let componentsConectedTo of component.connectedToPortA){
-                    node.add(componentsConectedTo);
+
+            // iterate throught every component's ports (2)
+            for(let i = 0; i > component.ports.length; i++){
+
+                // node whenever a port is connected to 2 or more 
+                if (component.ports[i] > 1){
+                    var node = new Set();
+                    // add itself to the node
+                    node.add(component);
+                    // add everything that's connected to component to the node
+                    for(let connection of component.port[i]){
+                        node.add(connection);
+                    }
+
+                    // if the node doesn't already exist, add it
+                    for (let otherNode of nodes){
+                        if (!setsAreEqual(otherNode, node)){
+                            nodes.add(node);
+                        }
+                    }
                 }
             }
         }
+        return nodes;
+    }
+
+    setsAreEqual(setA, setB) {
+        if (setA.size !== setB.size) {
+            return false;
+        }
+
+        // if they contain the same items but ordered differently, they are still equal (returns true)
+        for (let item of setA) {
+            if (!setB.has(item)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    calculateResistance(circuit){
+
+        // create an array of all resistors
+        var resistors = [];
+
+        for (let i = 0; i < circuit.listOfComponents.length; i++) {
+            if (circuit[i] instanceof Resistor) {
+                resistors.push(circuit[i]);
+            }
+        }
+
+        // SIMPLIFY CIRCUIT -> if series / if parallel
+        while(resistors.length > 1) {
+
+            for (let resistor of resistors){
+                for (let otherResistor of resistors){
+
+                    // so it doesn't compare with itself
+                    if(resistor !== otherResistor){
+                        if (this.isInSeries(resistor, otherResistor))
+                            this.replaceResistor(resistors, resistor, otherResistor, true);
+
+                        if(this.isInParallel(resistor, otherResistor, this.identifyNodes(circuit)))
+                            this.replaceResistor(resistors, resistor, otherResistor, false);
+                    }
+                }
+            }
+        }
+        return resistors[0].resistance;
+    }
+
+    // two components are in series if they are only connected to eachother
+    isInSeries(componentA, componentB){
+        // both ports of component A
+        for (let portA of componentA.ports){
+            // both ports of component B
+            for (let portB of componentB.ports){
+                if (portA.size == 1 && 
+                    portB.size == 1 &&
+                    this.setsAreEqual(portA, portB)){
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+    // two components are in parallel if they are connected to the same node
+    isInParallel(componentA, componentB, nodes){
+        for(let node of nodes){
+            for (let otherNode of nodes){
+                // so it doesn't compare with itself
+                if (node !== otherNode){
+                    if(node.has(componentA) && node.has(componentB) &&
+                    otherNode.has(componentA) && otherNode.has(componentB)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    // in the array of resistors, replaces resistor and otherResistor with another
+    // equivalent resistor
+
+    replaceResistor(resistors, resistor, otherResistor, series){
+        // replace these resistors by 1 equivalent resistor inside resistors
+        resistors.splice(resistors.indexOf(resistor), 1);
+        resistors.splice(resistors.indexOf(otherResistor), 1);
+
+        if(series)
+            var newResistance = resistor.resistance + otherResistor.resistance;
+        else // parallel
+            var newResistance = (1/resistor.resistance + 1/otherResistor.resistance)^(-1);
+
+        var newResistor = new Resistor(0, 0, newResistance)
+
+        // newResistor's port1 will have resistor's port1 + (concat) otherResistor's port1
+        for (let i = 0; i > newResistor.ports; i++){
+            newResistor.ports[i] = resistor.ports[i].concat(otherResistor.ports[i]);
+        }
+        resistors.push(newResistor);
+        return resistors
+    }
+
+
+    calculateVoltage(circuit){
+        let voltage = 0;
+        for (let i = 0; i < circuit.listOfComponents.length; i++) {
+            if (circuit[i] instanceof Source) {
+                voltage += circuit[i].voltage
+            }
+        }
+        return voltage;
+    }
+
+    calculateCurrent(voltage, resitance){
+        return voltage/resitance;
+    }
+}
+
         /*
 
         // nodes is an array containing node(s) which are arrays of components
@@ -77,97 +208,3 @@ class Calculator {
         return nodes;
 
         */
-      }
-
-    calculateResistance(circuit){
-
-        // create an array of all resistors
-        var resistors = [];
-
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            if (circuit[i] instanceof Resistor) {
-                resistors.push(circuit[i]);
-            }
-        }
-
-        // SIMPLIFY CIRCUIT -> if series / if parallel
-
-        while(resistors.length > 1) {
-            
-            for (let i = 0; i < resistors.length; i++) {
-
-                // series
-
-                // if connectedTo only has 1 port connected, it means its in series
-                var resistor = resistors[i]; // resistor object 
-
-                if (resistor.connectedToPortA.size === 1 || resistor.connectedToPortB.size === 1){ 
-
-                    if(resistor.connectedToPortA.size === 1)
-                        var connectedTo = resistor.connectedToPortA.values().next().value; // the set's first component 
-                    else
-                        var connectedTo = resistor.connectedToPortB.values().next().value; 
-
-                    // replace these resistors by 1 equivalent resistor inside resistors
-                    resistors.splice(i, 1);
-                    resistors.splice(resistors.indexOf(connectedTo), 1);
-
-                    //two resistors in series
-                    var newResistance = resistor.resistance + connectedTo.resistance;
-                    var newResistor = new Resistor(0, 0, newResistance)
-                    newResistor.connectedToPortA = resistor.connectedToPortA.concat(connectedTo.connectedToPortA);
-                    newResistor.connectedToPortB = resistor.connectedToPortB.concat(connectedTo.connectedToPortB);
-
-                    resistors.push(newResistor);
-
-                }
-
-                // parallel
-
-                // two resistors are in parallel if both their ports are connected
-                // to the same two nodes
-
-                if (resistor.connectedTo.size === 1){ 
-
-                    var connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
-
-                    if(resistor.connectedTo === connectedTo)
-                        console.log("they are indeed in series")
-
-                    // replace these resistors by 1 equivalent resistor inside resistors
-                    resistors.splice(i, 1);
-                    resistors.splice(resistors.indexOf(connectedTo), 1);
-
-                    //two resistors in parallel
-                    var newResistance = (1/resistor.resistance + 1/connectedTo.resistance)^(-1);
-                    var newResistor = new Resistor(0, 0, newResistance)
-                    resistors.push(newResistor);
-
-                }
-            }
-        }
-
-        return resistors[0].resistance;
-    }
-
-    calculateVoltage(circuit){
-        let voltage = 0;
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            if (circuit[i] instanceof Source) {
-                voltage += circuit[i].voltage
-            }
-        }
-        return voltage;
-    }
-
-    calculateCurrent(voltage, resitance){
-        return voltage/resitance;
-    }
-
-    calculateVoltageDrop(pointA, pointB){
-        // Ohm's law to calculate difference of potential
-    }
-}
-
-
-
