@@ -30,6 +30,22 @@ class Calculator {
     }
 
     identifyNodes(circuit) {
+
+        var nodes = new Set();
+
+        for (let component of circuit.listOfComponents) {
+            if (component.connectedToPortA.size > 1){
+                var node = new Set();
+                // add itself to the node
+                node.add(component);
+                // add everything that's connected to component to the node
+                for(let componentsConectedTo of component.connectedToPortA){
+                    node.add(componentsConectedTo);
+                }
+            }
+        }
+        /*
+
         // nodes is an array containing node(s) which are arrays of components
         let nodes = [];
 
@@ -59,6 +75,8 @@ class Calculator {
             }
         }
         return nodes;
+
+        */
       }
 
     calculateResistance(circuit){
@@ -97,7 +115,9 @@ class Calculator {
                     //two resistors in series
                     var newResistance = resistor.resistance + connectedTo.resistance;
                     var newResistor = new Resistor(0, 0, newResistance)
-                    newResistor.connectedToPortA = 
+                    newResistor.connectedToPortA = resistor.connectedToPortA.concat(connectedTo.connectedToPortA);
+                    newResistor.connectedToPortB = resistor.connectedToPortB.concat(connectedTo.connectedToPortB);
+
                     resistors.push(newResistor);
 
                 }
