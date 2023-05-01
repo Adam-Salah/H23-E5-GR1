@@ -16,11 +16,12 @@ export class Circuit {
         }
     }
 
-    connect(componentA, componentB) {
-        componentA.connectedTo.add(componentB)
-        componentB.connectedTo.add(componentA)
+    connect(portA, portB) {
+        portA.add(portB)
+        portB.add(portA)
     }
 
+    // CHANGE
     disconnect(componentA, componentB) {
         if (componentA.connectedTo.has(componentB))
             componentA.connectedTo.delete(componentB)

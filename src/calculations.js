@@ -29,6 +29,38 @@ class Calculator {
     constructor() {
     }
 
+    identifyNodes(circuit) {
+        // nodes is an array containing node(s) which are arrays of components
+        let nodes = [];
+
+        // iterate throught every component of the circuit
+        for (let component of circuit) {
+
+            // iterate throught every component's connections (connectedTo Set)
+            for (let connectedTo of component.connectedTo) {
+
+                let nodeFound = false;
+
+                // iterate throught every node
+                for (let node of nodes) {
+
+                // 
+                if (node.includes(connectedTo)) {
+                    nodeFound = true;
+                    if (!node.includes(component)) {
+                    node.push(component);
+                    }
+                    break;
+                }
+                }
+                if (!nodeFound) {
+                nodes.push([component, connectedComponent]);
+                }
+            }
+        }
+        return nodes;
+      }
+
     calculateResistance(circuit){
 
         // create an array of all resistors
@@ -51,12 +83,12 @@ class Calculator {
                 // if connectedTo only has 1 port connected, it means its in series
                 var resistor = resistors[i]; // resistor object 
 
-                if (resistor.connectedTo.size === 1){ 
+                if (resistor.connectedToPortA.size === 1 || resistor.connectedToPortB.size === 1){ 
 
-                    var connectedTo = resistor.connectedTo.values().next().value; // the set's first component 
-
-                    if(resistor.connectedTo === connectedTo)
-                        console.log("they are indeed in series")
+                    if(resistor.connectedToPortA.size === 1)
+                        var connectedTo = resistor.connectedToPortA.values().next().value; // the set's first component 
+                    else
+                        var connectedTo = resistor.connectedToPortB.values().next().value; 
 
                     // replace these resistors by 1 equivalent resistor inside resistors
                     resistors.splice(i, 1);
@@ -65,6 +97,7 @@ class Calculator {
                     //two resistors in series
                     var newResistance = resistor.resistance + connectedTo.resistance;
                     var newResistor = new Resistor(0, 0, newResistance)
+                    newResistor.connectedToPortA = 
                     resistors.push(newResistor);
 
                 }
