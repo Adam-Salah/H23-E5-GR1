@@ -29,18 +29,12 @@ export class Circuit {
             console.log("port 1 isnt connected to port 2")
 
         if (componentB.connectedTo.has(componentA))
-        componentB.connectedTo.delete(componentA)
+            componentB.connectedTo.delete(componentA)
         else
             console.log("port 2 isnt connected to port 1")
     }
 
     deleteCircuit(){
         this.components = [];
-    }
-
-// ========== CALCULATIONS ===========
-
-    identifyNode(){
-        
     }
 }
