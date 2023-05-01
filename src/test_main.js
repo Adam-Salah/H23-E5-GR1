@@ -2,7 +2,25 @@ import { Component, Source, Resistor, Capacitor, Port } from './components.js';
 
 import { Circuit } from './circuit.js';
 
+import { Calculator } from './calculations.js';
+
+
 var circuit = new Circuit();
+
+circuit.add(new Resistor(20, 20, 50));
+circuit.add(new Resistor(20, 20, 100));
+
+circuit.connect(circuit.components[0].ports[1], circuit.components[1].ports[0]);
+circuit.connect(circuit.components[1].ports[0], circuit.components[0].ports[1]);
+
+var calculate = document.getElementById("calculate_button");
+calculate.addEventListener("click", function(event) {
+    var calculator = new Calculator()
+    console.log("total voltage : "+calculator.calculateVoltage(circuit))
+
+    console.log("total resistance : "+calculator.calculateResistance(circuit))
+
+});
 
 var source = document.getElementById("source_button");
 source.addEventListener("click", function(event) {
@@ -33,22 +51,24 @@ deleteAll.addEventListener("click", function(event) {
 
 var connect = document.getElementById("connect_button");
 connect.addEventListener("click", function(event) {
-    circuit.connect(circuit.components[0], 
-                    circuit.components[1])
+    circuit.connect(circuit.components[0].ports[0], 
+                    circuit.components[1].ports[1])
     
     for (let i = 0; i < 2; i++) {
-            console.log(circuit.components[i].connectedTo);
+            console.log(circuit.components[i].ports);
     }
 });
 
 var disconnect = document.getElementById("disconnect_button");
 disconnect.addEventListener("click", function(event) {
-    circuit.disconnect(circuit.listOfComponents[0].ports[0], 
-        circuit.listOfComponents[1].ports[1])
+    console.log(circuit.components)
+
+    circuit.disconnect(circuit.components[0].ports[0], 
+        circuit.components[1].ports[1])
 
     for (let i = 0; i < 2; i++) {
         for (let j = 0; j < 2; j++) {
-            console.log(circuit.listOfComponents[i].ports[j].connectedTo);
+            console.log(circuit.components[i].ports[j]);
         }
     }
 });

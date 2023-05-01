@@ -21,8 +21,10 @@ export class Component{
         */
 
         //this.port = new Port(new Set());
-        this.connectedToPortA = new Set();
-        this.connectedToPortB = new Set();
+        this.ports = [
+          new Port(),
+          new Port(),
+        ]
     }
 }
 export class Source extends Component {
@@ -45,6 +47,10 @@ export class Capacitor extends Component {
       this.capacitance = capacitance;
     }
   }
+
+export class Port extends Set{
+  
+}
 
 /*
 export class Port {
