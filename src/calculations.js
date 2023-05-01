@@ -24,7 +24,7 @@ CALCULATING DIFFERENCE OF VOLTAGE AT 2 POINTS
 */
 
 
-class Calculator {
+export class Calculator {
 
     constructor() {
     }
@@ -33,7 +33,7 @@ class Calculator {
         var nodes = new Set();
 
         // iterate throught every component
-        for (let component of circuit.listOfComponents) {
+        for (let component of circuit.components) {
 
             // iterate throught every component's ports (2)
             for(let i = 0; i > component.ports.length; i++){
@@ -79,13 +79,26 @@ class Calculator {
         // create an array of all resistors
         var resistors = [];
 
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            if (circuit[i] instanceof Resistor) {
-                resistors.push(circuit[i]);
+        for (let i = 0; i < circuit.components.length; i++) {
+            if (circuit.components[i] instanceof Resistor) {
+                resistors.push(circuit.components[i]);
             }
         }
 
+        console.log(resistors);
+
         // SIMPLIFY CIRCUIT -> if series / if parallel
+
+        for (let resistor of resistors){
+            for (let otherResistor of resistors){
+                // so it doesn't compare with itself
+                if(resistor !== otherResistor){
+                    if (this.isInSeries(resistor, otherResistor))
+                        console.log(resistor+" and "+otherResistor+" in SERIES")
+                }
+            }
+        }
+        /*
         while(resistors.length > 1) {
 
             for (let resistor of resistors){
@@ -102,18 +115,23 @@ class Calculator {
                 }
             }
         }
+        */
         return resistors[0].resistance;
     }
 
     // two components are in series if they are only connected to eachother
     isInSeries(componentA, componentB){
+        console.log("isInSeries Called")
         // both ports of component A
         for (let portA of componentA.ports){
             // both ports of component B
             for (let portB of componentB.ports){
+                console.log("portA size : "+portA.size+"  "+"portB size : "+portB.size);
+
                 if (portA.size == 1 && 
                     portB.size == 1 &&
                     this.setsAreEqual(portA, portB)){
+                        console.log("wadawdwad");
                         return true;
                 }
             }
@@ -161,10 +179,10 @@ class Calculator {
 
 
     calculateVoltage(circuit){
-        let voltage = 0;
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            if (circuit[i] instanceof Source) {
-                voltage += circuit[i].voltage
+        var voltage = 0;
+        for (let i = 0; i < circuit.components.length; i++) {
+            if (circuit.components[i] instanceof Source) {
+                voltage += parseInt(circuit.components[i].voltage);
             }
         }
         return voltage;
