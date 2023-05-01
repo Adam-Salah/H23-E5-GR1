@@ -22,8 +22,8 @@ export class Component{
 
         //this.port = new Port(new Set());
         this.ports = [
-          new Port(new Set()),
-          new Port(new Set()),
+          new Port(),
+          new Port(),
         ]
     }
 }
@@ -47,6 +47,10 @@ export class Capacitor extends Component {
       this.capacitance = capacitance;
     }
   }
+
+export class Port extends Set{
+  
+}
 
 /*
 export class Port {

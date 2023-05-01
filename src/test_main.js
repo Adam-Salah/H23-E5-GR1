@@ -33,22 +33,24 @@ deleteAll.addEventListener("click", function(event) {
 
 var connect = document.getElementById("connect_button");
 connect.addEventListener("click", function(event) {
-    circuit.connect(circuit.components[0], 
-                    circuit.components[1])
+    circuit.connect(circuit.components[0].ports[0], 
+                    circuit.components[1].ports[1])
     
     for (let i = 0; i < 2; i++) {
-            console.log(circuit.components[i].connectedTo);
+            console.log(circuit.components[i].ports);
     }
 });
 
 var disconnect = document.getElementById("disconnect_button");
 disconnect.addEventListener("click", function(event) {
-    circuit.disconnect(circuit.listOfComponents[0].ports[0], 
-        circuit.listOfComponents[1].ports[1])
+    console.log(circuit.components)
+
+    circuit.disconnect(circuit.components[0].ports[0], 
+        circuit.components[1].ports[1])
 
     for (let i = 0; i < 2; i++) {
         for (let j = 0; j < 2; j++) {
-            console.log(circuit.listOfComponents[i].ports[j].connectedTo);
+            console.log(circuit.components[i].ports[j]);
         }
     }
 });
