@@ -162,6 +162,7 @@
 /* Project */
 
 .sidebar-left {
+    cursor: grab;
     position: fixed;
     top: Calc(50% + 5.5vh);
     transform: translateY(-50%);
@@ -172,8 +173,7 @@
     background-color: white;
 }
 
-.led {
-    font-size: 3vw;
+.sidebar-left div img{
     width: 3vw;
     height: 3vw;
 }
@@ -193,9 +193,11 @@
 
 }
 
-.case div {
+.case div img {
+    cursor: grab;
     position: relative;
+    width: 50px;
+    height: 50px;
     left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(50%);
 }

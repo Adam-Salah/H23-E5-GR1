@@ -3,7 +3,7 @@ import {useDrop} from "react-dnd";
 import {ItemTypes} from "./Constantes";
 import Led from "./Composantes/Led.js";
 
-function Case({x, y, type, pushComponent, removeComponent}) {
+function Case({x, y, type, pushComponent, removeComponent, drawWires}) {
 
     let id = x.toString().concat(';', y.toString())
 
@@ -22,6 +22,7 @@ function Case({x, y, type, pushComponent, removeComponent}) {
         if(pushComponent(x, y, itemType)) {
             removeComponent(itemId)
         }
+        drawWires()
     }
 
     let component

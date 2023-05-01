@@ -8,7 +8,7 @@ function Led({x, y}) {
             x={x}
             y={y}
             itemType={ItemTypes.LED}
-            image={"💡"}
+            image={"./ressources/images/Led.png"}
         />
     )
 }

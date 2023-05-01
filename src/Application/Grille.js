@@ -22,7 +22,8 @@ function Grille() {
         for (let i = 0; i < casesState.length; i++) {
             let obj = casesState.at(i)
             casesRender.push(<Case key={obj.key} x={obj.x} y={obj.y} type={obj.type} pushComponent={pushComponent}
-                                   removeComponent={removeComponent}/>)
+                                   removeComponent={removeComponent}
+                                   drawWires={drawWires()}/>)
         }
         return casesRender
     }
@@ -32,10 +33,10 @@ function Grille() {
     function pushComponent(x, y, itemType) {
         let tempCases = casesState
         let pushCompleted = false
-        for (let i = 0; i < cases.length; i++) {
+        for (let i = 0; i < tempCases.length; i++) {
             if (tempCases.at(i).x.toString().concat(";", tempCases.at(i).y.toString()) === x.toString().concat(";", y.toString())) {
                 if (tempCases.at(i).type !== null) {
-
+                    //Fil
                 } else {
                     tempCases.at(i).type = itemType
                     pushCompleted = true
@@ -49,7 +50,7 @@ function Grille() {
 
     function removeComponent(itemId) {
         let tempCases = casesState
-        for (let i = 0; i < cases.length; i++) {
+        for (let i = 0; i < tempCases.length; i++) {
             if (tempCases.at(i).x.toString().concat(";", tempCases.at(i).y.toString()) === itemId) {
                 tempCases.at(i).type = null
                 setCasesState(tempCases)
@@ -58,9 +59,13 @@ function Grille() {
         setCasesRenderState(render)
     }
 
+    function drawWires() {
+
+    }
+
 
     return (
-        <ul className={'grid'}>{casesRenderState}</ul>
+        <ul className={'grid'} id={'grid'}>{casesRenderState}</ul>
     )
 }
 

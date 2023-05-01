@@ -24,15 +24,13 @@ function Composante({x, y, itemType, image}) {
     }))
 
     if (didDrop === true) {
-        dropState = truedeskd
+        dropState = true
     }
 
     if (!isDragging) {
         return (
-            <div className={'led'} id={id} data-dropstate={dropState}>
-                <div ref={drag}>
-                    {image}
-                </div>
+            <div className={'composante'} id={id} data-dropstate={dropState}>
+                <img src={image} ref={drag} alt={"Led"}/>
             </div>
         )
     }
