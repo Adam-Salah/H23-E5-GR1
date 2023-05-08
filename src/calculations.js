@@ -93,7 +93,7 @@ export class Calculator {
         console.log(resistors);
 
         // SIMPLIFY CIRCUIT -> if series / if parallel
-        while(resistors.length > 1) {
+        //while(resistors.length > 1) {
             for (let resistor of resistors){
                 for (let otherResistor of resistors){
                     // so it doesn't compare with itself
@@ -105,7 +105,7 @@ export class Calculator {
                     }
                 }
             }
-        }
+        //}
         /*
         while(resistors.length > 1) {
 

@@ -9,10 +9,11 @@ var circuit = new Circuit();
 
 circuit.add(new Resistor(20, 20, 50));
 circuit.add(new Resistor(20, 20, 200));
-
-
+circuit.add(new Resistor(20, 20, 400));
 
 circuit.connect(circuit.components[0].ports[1], circuit.components[1].ports[0]);
+circuit.connect(circuit.components[1].ports[1], circuit.components[2].ports[0]);
+
 
 var calculate = document.getElementById("calculate_button");
 calculate.addEventListener("click", function(event) {
@@ -20,7 +21,6 @@ calculate.addEventListener("click", function(event) {
     console.log("total voltage : "+calculator.calculateVoltage(circuit))
 
     console.log("total resistance : "+calculator.calculateResistance(circuit))
-
 });
 
 var source = document.getElementById("source_button");
