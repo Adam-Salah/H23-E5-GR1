@@ -13,6 +13,7 @@ module.exports = {
         './Application/Case': './Application/Case',
         './Application/Grille': './Application/Grille',
         './Application/Constantes': './Application/Constantes',
+        './Application/Ligne': './Application/Ligne',
         './Application/Composantes/Led': './Application/Composantes/Led',
         './Application/Composantes/Composante': './Application/Composantes/Composante',
 
