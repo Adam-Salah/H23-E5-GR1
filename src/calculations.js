@@ -61,17 +61,19 @@ export class Calculator {
     }
 
     setsAreEqual(setA, setB) {
+
         if (setA.size !== setB.size) {
+            console.log("not same size");
             return false;
         }
 
         // if they contain the same items but ordered differently, they are still equal (returns true)
         for (let item of setA) {
-            if (!setB.has(item)) {
-                return false;
+            if (setB.has(item)) {
+                console.log(!setA.has(item));
+                return true;
             }
         }
-        return true;
     }
 
     calculateResistance(circuit){
@@ -81,23 +83,29 @@ export class Calculator {
 
         for (let i = 0; i < circuit.components.length; i++) {
             if (circuit.components[i] instanceof Resistor) {
-                resistors.push(circuit.components[i]);
+                if(circuit.components[i].ports[0].size !== 0 ||
+                    circuit.components[i].ports[1].size !== 0){
+                        resistors.push(circuit.components[i]);
+                    }
             }
         }
 
         console.log(resistors);
 
         // SIMPLIFY CIRCUIT -> if series / if parallel
-
-        for (let resistor of resistors){
-            for (let otherResistor of resistors){
-                // so it doesn't compare with itself
-                if(resistor !== otherResistor){
-                    if (this.isInSeries(resistor, otherResistor))
-                        console.log(resistor+" and "+otherResistor+" in SERIES")
+        //while(resistors.length > 1) {
+            for (let resistor of resistors){
+                for (let otherResistor of resistors){
+                    // so it doesn't compare with itself
+                    if(resistor !== otherResistor){
+                        if (this.isInSeries(resistor, otherResistor)){
+                            console.log(resistor+" and "+otherResistor+" in SERIES")
+                            this.replaceResistor(resistors, resistor, otherResistor, true);
+                        }
+                    }
                 }
             }
-        }
+        //}
         /*
         while(resistors.length > 1) {
 
@@ -127,13 +135,19 @@ export class Calculator {
             // both ports of component B
             for (let portB of componentB.ports){
                 console.log("portA size : "+portA.size+"  "+"portB size : "+portB.size);
+                if(portA.size == 1 && portB.size == 1 && 
+                    portA.has(portB) && portB.has(portA)){
 
-                if (portA.size == 1 && 
-                    portB.size == 1 &&
-                    this.setsAreEqual(portA, portB)){
-                        console.log("wadawdwad");
                         return true;
+                        /*
+                        if(this.setsAreEqual(portA, portB)){
+                            console.log("sets are euqal")
+                        }
+                        */
                 }
+                /*
+                    this.setsAreEqual(portA, portB)
+                */
             }
         }
         return false;
