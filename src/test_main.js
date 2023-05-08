@@ -8,10 +8,11 @@ import { Calculator } from './calculations.js';
 var circuit = new Circuit();
 
 circuit.add(new Resistor(20, 20, 50));
-circuit.add(new Resistor(20, 20, 100));
+circuit.add(new Resistor(20, 20, 200));
+
+
 
 circuit.connect(circuit.components[0].ports[1], circuit.components[1].ports[0]);
-circuit.connect(circuit.components[1].ports[0], circuit.components[0].ports[1]);
 
 var calculate = document.getElementById("calculate_button");
 calculate.addEventListener("click", function(event) {
