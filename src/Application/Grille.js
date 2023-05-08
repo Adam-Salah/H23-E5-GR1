@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Case from './Case';
 import Ligne from './Ligne';
 import {v4 as uuidv4} from 'uuid';
@@ -19,21 +19,24 @@ function Grille() {
 		}
 	}
 	const [casesState, setCasesState] = useState(cases);
+	const [filsState, setFilsState] = useState([]);
 	
 	const render = () => {
 		let casesRender = [];
 		let lignesRender = [];
 		let render = [];
 		let tempCases = casesState;
+		let tempFils = filsState;
 		for (let i = 0; i < tempCases.length; i++) {
 			let obj = tempCases.at(i);
 			casesRender.push(<Case key={obj.key} x={obj.x} y={obj.y} type={obj.type} ports={obj.ports}
 			                       pushComponent={pushComponent} />);
-			for (let j = 0; j < obj.ports.length; j++) {
-				lignesRender.push(<Ligne key={uuidv4()} from={obj.ports.at(j)}
-				                         to={obj.x.toString().concat(';', obj.y.toString())} />);
-			}
 		}
+		for (let i = 0; i < tempFils.length; i++) {
+			lignesRender.push(<Ligne key={uuidv4()} from={tempFils.at(i).at(0)}
+			                         to={tempFils.at(i).at(1)} />);
+		}
+		
 		render.push(casesRender);
 		render.push(lignesRender);
 		return render;
@@ -43,6 +46,7 @@ function Grille() {
 	
 	function pushComponent(x, y, itemType, itemId) {
 		let tempCases = casesState;
+		let tempFils = [];
 		let finalState;
 		for (let i = 0; i < tempCases.length; i++) {
 			if (tempCases.at(i).x.toString().concat(';', tempCases.at(i).y.toString())
@@ -62,7 +66,18 @@ function Grille() {
 				}
 			}
 		}
+		for (let i = 0; i < casesState.length; i++) {
+			for (let j = 0; j < casesState.at(i).ports.length; j++) {
+				if (casesState.at(i).ports.at(j) !== null &&
+					casesState.at(i).ports.at(j) !== undefined) {
+					tempFils.push(
+						[casesState.at(i).x.toString().concat(';', casesState.at(i).y.toString()),
+							casesState.at(i).ports.at(j)]);
+				}
+			}
+		}
 		setCasesState(finalState);
+		setFilsState(tempFils);
 		setCasesRenderState(render());
 	}
 	
