@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Case from './Case';
 import Ligne from './Ligne';
+import {v4 as uuidv4} from 'uuid';
 
 function Grille() {
 	
@@ -8,7 +9,7 @@ function Grille() {
 	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < 10; j++) {
 			let obj = {
-				key: React.useId(),
+				key: uuidv4(),
 				x: j,
 				y: i,
 				type: null,
@@ -29,12 +30,12 @@ function Grille() {
 			casesRender.push(<Case key={obj.key} x={obj.x} y={obj.y} type={obj.type} ports={obj.ports}
 			                       pushComponent={pushComponent} />);
 			for (let j = 0; j < obj.ports.length; j++) {
-				lignesRender.push(<Ligne key={React.useId()} from={obj.ports.at(j)}
+				lignesRender.push(<Ligne key={uuidv4()} from={obj.ports.at(j)}
 				                         to={obj.x.toString().concat(';', obj.y.toString())} />);
 			}
 		}
-		render.push(casesRender)
-		render.push(lignesRender)
+		render.push(casesRender);
+		render.push(lignesRender);
 		return render;
 	};
 	
@@ -71,6 +72,7 @@ function Grille() {
 			if (tempCases.at(i).x.toString().concat(';', tempCases.at(i).y.toString())
 				=== itemId) {
 				tempCases.at(i).type = null;
+				tempCases.at(i).ports = [];
 			}
 		}
 		return tempCases;
