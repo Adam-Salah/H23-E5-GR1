@@ -2,6 +2,8 @@ import React from 'react';
 import {useDrop} from 'react-dnd';
 import {ItemTypes} from './Constantes';
 import Led from './Composantes/Led.js';
+import Resistor from "./Composantes/Resistor";
+import Source from "./Composantes/Source";
 
 function Case({x, y, type, pushComponent}) {
 	
@@ -9,7 +11,7 @@ function Case({x, y, type, pushComponent}) {
 	
 	const [{isOver, didDrop}, drop] = useDrop(
 		() => ({
-			accept: ItemTypes.LED,
+			accept: [ItemTypes.LED, ItemTypes.SOURCE, ItemTypes.RESISTOR],
 			drop: (item) => newComponent(item.itemType, item.itemId),
 			collect: (monitor) => ({
 				isOver: monitor.isOver(),
@@ -26,6 +28,12 @@ function Case({x, y, type, pushComponent}) {
 	switch (type) {
 		case 'Led':
 			component = <Led key={React.useId} x={x} y={y} />;
+			break;
+		case 'Resistor':
+			component = <Resistor key={React.useId} x={x} y={y} />;
+			break;
+		case 'Source':
+			component = <Source key={React.useId} x={x} y={y} />;
 			break;
 		case undefined:
 			component = null;

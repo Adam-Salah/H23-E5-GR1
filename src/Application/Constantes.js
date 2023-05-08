@@ -1,4 +1,7 @@
 export const ItemTypes = {
     LED: 'Led',
-    NULL: 'null'
+    NULL: 'null',
+    RESISTOR: 'Resistor',
+    SOURCE: 'Source'
+
 }

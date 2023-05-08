@@ -16,7 +16,7 @@
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ItemTypes\": () => (/* binding */ ItemTypes)\n/* harmony export */ });\nvar ItemTypes = {\n  LED: 'Led',\n  NULL: 'null'\n};\n\n//# sourceURL=webpack:///./Application/Constantes.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ItemTypes\": () => (/* binding */ ItemTypes)\n/* harmony export */ });\nvar ItemTypes = {\n  LED: 'Led',\n  NULL: 'null',\n  RESISTOR: 'Resistor',\n  SOURCE: 'Source'\n};\n\n//# sourceURL=webpack:///./Application/Constantes.js?");
 
 /***/ })
 
