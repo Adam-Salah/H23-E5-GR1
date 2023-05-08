@@ -28,14 +28,15 @@ function Grille() {
         for (let i = 0; i < tempCases.length; i++) {
             let obj = tempCases.at(i);
             casesRender.push(<Case key={obj.key} x={obj.x} y={obj.y} type={obj.type} ports={obj.ports}
-                                   pushComponent={pushComponent}/>);
+                                pushComponent={pushComponent}/>);
             for (let j = 0; j < obj.ports.length; j++) {
                 lignesRender.push(<Ligne key={uuidv4()} from={obj.ports.at(j)}
-                                         to={obj.x.toString().concat(';', obj.y.toString())}/>);
+                                        to={obj.x.toString().concat(';', obj.y.toString())}/>);
             }
         }
 
         //CALCULS
+        //tempCases.at(0).x
 
 
         render.push(casesRender);
