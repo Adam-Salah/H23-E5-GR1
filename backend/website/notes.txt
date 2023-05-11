@@ -72,6 +72,11 @@ pip install djangorestframework
 django-admin startapp app_name
 
 myenv\Scripts\activate
+myenv\Scripts\deactivate
+
+virtualenv\Scripts\activate
+
 
 installing pip within the venv : python -m ensurepip --default-pip
 
+pip freeze >requirements.txt 
