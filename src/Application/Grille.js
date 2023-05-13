@@ -14,7 +14,6 @@ function Grille() {
     var calculator = new Calculator();
     // ==================================================================================
 
-
     let cases = [];
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 10; j++) {
@@ -81,7 +80,6 @@ function Grille() {
         console.log("total voltage = "+totalVoltage);
         console.log("total current = "+totalCurrent);
 
-        
         // ==================================================================================
 
         render.push(casesRender);
