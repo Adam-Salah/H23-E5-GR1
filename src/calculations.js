@@ -24,7 +24,7 @@ CALCULATING DIFFERENCE OF VOLTAGE AT 2 POINTS
 */
 
 
-class Calculator {
+export class Calculator {
 
     constructor() {
     }
@@ -33,7 +33,7 @@ class Calculator {
 
         var nodes = new Set();
 
-        for (let component of circuit.listOfComponents) {
+        for (let component of circuit.components) {
             if (component.connectedToPortA.size > 1){
                 var node = new Set();
                 // add itself to the node
@@ -87,7 +87,7 @@ class Calculator {
         // create an array of all resistors
         var resistors = [];
 
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
+        for (let i = 0; i < circuit.components.length; i++) {
             if (circuit[i] instanceof Resistor) {
                 resistors.push(circuit[i]);
             }
@@ -155,22 +155,17 @@ class Calculator {
 
     calculateVoltage(circuit){
         let voltage = 0;
-        for (let i = 0; i < circuit.listOfComponents.length; i++) {
-            if (circuit[i] instanceof Source) {
-                voltage += circuit[i].voltage
+        for (let i = 0; i < circuit.components.length; i++) {
+            if (circuit.components[i] instanceof Source) {
+                voltage += circuit.components[i].voltage;
             }
         }
         return voltage;
     }
 
-    calculateCurrent(voltage, resitance){
-        return voltage/resitance;
-    }
-
-    calculateVoltageDrop(pointA, pointB){
-        // Ohm's law to calculate difference of potential
+    calculateCurrent(resistance, voltage){
+        return resistance/voltage;
     }
 }
-
 
 

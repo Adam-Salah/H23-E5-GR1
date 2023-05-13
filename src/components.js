@@ -1,6 +1,8 @@
 const sourceSize = 10;
 const resistorSize = 20;
 const capacitorSize = 30;
+const ledSize = 40;
+
 
 export class Component{
     constructor(id, type, positionX, positionY, size){
@@ -47,6 +49,12 @@ export class Capacitor extends Component {
       this.capacitance = capacitance;
     }
   }
+
+export class Led extends Component {
+  constructor(positionX, positionY) {
+    super("Led", positionX, positionY, ledSize);
+  }
+}
 
 export class Port extends Set{
   

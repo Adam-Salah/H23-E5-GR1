@@ -3,7 +3,17 @@ import Case from './Case';
 import Ligne from './Ligne';
 import {v4 as uuidv4} from 'uuid';
 
+import { Calculator } from '../calculations.js';
+import { Circuit } from '../circuit.js';
+import { Component, Source, Resistor, Capacitor, Led, Port } from '../components.js';
+
+
 function Grille() {
+
+    // ==================================================================================
+    var calculator = new Calculator();
+    // ==================================================================================
+
 
     let cases = [];
     for (let i = 0; i < 10; i++) {
@@ -35,9 +45,44 @@ function Grille() {
             }
         }
 
-        //CALCULS
-        //tempCases.at(0).x
+        // =================================================================================================
 
+        // BUILD CIRCUIT : 
+
+        //Creates a new circuit everytime
+        var circuit = new Circuit();
+
+        for (let i = 0; i < tempCases.length; i++) {
+            let obj = tempCases.at(i);
+            switch(obj.type){
+                case 'Source':
+                    circuit.add(new Source(obj.x, obj.y, 100));
+                        break;
+                case 'Resistor':
+                    circuit.add(new Resistor(obj.x, obj.y, 100));
+                        break;
+                case 'Capacitor':
+                    circuit.add(new Capacitor(obj.x, obj.y, 100));
+                        break;
+                case 'Led':
+                    circuit.add(new Led(obj.x, obj.y));
+                        break;
+            }
+        }
+
+        // CALCULATE
+
+        //var totalResistance = calculator.calculateResistance(circuit);
+        var totalVoltage = calculator.calculateVoltage(circuit);
+        var totalCurrent = calculator.calculateCurrent(100, totalVoltage);
+
+        console.log(circuit);
+
+        console.log("total voltage = "+totalVoltage);
+        console.log("total current = "+totalCurrent);
+
+        
+        // ==================================================================================
 
         render.push(casesRender);
         render.push(lignesRender);

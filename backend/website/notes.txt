@@ -75,8 +75,23 @@ myenv\Scripts\activate
 myenv\Scripts\deactivate
 
 virtualenv\Scripts\activate
+virtualenv\Scripts\deactivate
 
 
 installing pip within the venv : python -m ensurepip --default-pip
 
 pip freeze >requirements.txt 
+
+# Delete the virtual environment folder (replace 'your_env' with your actual environment name)
+rmdir /s /q myenv
+rd /s /q myenv
+
+
+# Recreate the virtual environment
+python -m venv myenv
+
+# Activate the virtual environment
+myenv\Scripts\activate
+
+# Install Django
+pip install django
