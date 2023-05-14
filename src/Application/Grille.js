@@ -53,21 +53,34 @@ function Grille() {
 
         for (let i = 0; i < tempCases.length; i++) {
             let obj = tempCases.at(i);
-            switch(obj.type){
-                case 'Source':
-                    circuit.add(new Source(obj.x, obj.y, 100));
-                        break;
-                case 'Resistor':
-                    circuit.add(new Resistor(obj.x, obj.y, 100));
-                        break;
-                case 'Capacitor':
-                    circuit.add(new Capacitor(obj.x, obj.y, 100));
-                        break;
-                case 'Led':
-                    circuit.add(new Led(obj.x, obj.y));
-                        break;
+            // if the component is connected to something, add it to circuit for calculs
+            if(obj.ports != ""){
+                switch(obj.type){
+                    case 'Source':
+                            circuit.add(new Source(obj.x, obj.y, 100));
+                            break;
+                    case 'Resistor':
+                        circuit.add(new Resistor(obj.x, obj.y, 100));
+                            break;
+                    case 'Capacitor':
+                        circuit.add(new Capacitor(obj.x, obj.y, 100));
+                            break;
+                    case 'Led':
+                        circuit.add(new Led(obj.x, obj.y));
+                            break;
+                }
             }
         }
+
+        /*
+        console.log("circuit : "+circuit.components);
+
+        for (let i = 0; i < tempCases.length; i++) {
+            console.log("ports : "+tempCases.at(i).ports);
+        }
+        */
+
+
 
         // CALCULATE
 
