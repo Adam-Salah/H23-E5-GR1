@@ -19,10 +19,6 @@ export class Circuit {
     connect(portA, portB) {
         portA.add(portB)
         portB.add(portA)
-
-        if (portA.has(portB)){
-            console.log("yes")
-        }
     }
 
     // CHANGE
