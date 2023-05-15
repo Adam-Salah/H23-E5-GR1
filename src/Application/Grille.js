@@ -86,7 +86,7 @@ function Grille() {
 
         //var totalResistance = calculator.calculateResistance(circuit);
         var totalVoltage = calculator.calculateVoltage(circuit);
-        var totalCurrent = calculator.calculateCurrent(100, totalVoltage);
+        var totalCurrent = calculator.calculateCurrent(totalVoltage, 100);
 
         console.log(circuit);
 

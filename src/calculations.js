@@ -93,6 +93,7 @@ export class Calculator {
         console.log(resistors);
 
         // SIMPLIFY CIRCUIT -> if series / if parallel
+        
         while(resistors.length > 1) {
             for (let resistor of resistors){
                 for (let otherResistor of resistors){
@@ -203,11 +204,10 @@ export class Calculator {
         return voltage;
     }
 
-    calculateCurrent(resistance, voltage){
-        if(voltage == 0)
-            return 0;
-        else
-            return resistance/voltage;
+    calculateCurrent(voltage, resistance){
+        if(resistance == 0)
+            resistance = 1;
+        return voltage/resistance;
     }
 }
         /*

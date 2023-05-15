@@ -77,7 +77,6 @@ myenv\Scripts\deactivate
 virtualenv\Scripts\activate
 virtualenv\Scripts\deactivate
 
-
 installing pip within the venv : python -m ensurepip --default-pip
 
 pip freeze >requirements.txt 
