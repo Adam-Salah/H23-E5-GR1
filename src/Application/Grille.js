@@ -57,7 +57,7 @@ function Grille() {
             if(obj.ports != ""){
                 switch(obj.type){
                     case 'Source':
-                            circuit.add(new Source(obj.x, obj.y, 100));
+                        circuit.add(new Source(obj.x, obj.y, 100));
                             break;
                     case 'Resistor':
                         circuit.add(new Resistor(obj.x, obj.y, 100));
@@ -72,15 +72,13 @@ function Grille() {
             }
         }
 
-        /*
         console.log("circuit : "+circuit.components);
 
         for (let i = 0; i < tempCases.length; i++) {
             console.log("ports : "+tempCases.at(i).ports);
+
+            tempCases.at(i).ports.at(0);
         }
-        */
-
-
 
         // CALCULATE
 
@@ -110,11 +108,26 @@ function Grille() {
             if (tempCases.at(i).x.toString().concat(';', tempCases.at(i).y.toString())
                 === x.toString().concat(';', y.toString())) {
                 if (tempCases.at(i).type !== null && itemId !== 'c') {
+
                     tempCases.at(i).ports.push(itemId);
+
+                    // ==============================================================
+
+                    
+
+                    // ==============================================================
+
                     for (let j = 0; j < tempCases.length; j++) {
                         if (tempCases.at(j).x.toString().concat(';', tempCases.at(j).y.toString())
                             === itemId) {
+
                             tempCases.at(j).ports.push(tempCases.at(i).x.toString().concat(';', tempCases.at(i).y.toString()));
+
+                            // ==============================================================
+
+
+                            // ==============================================================
+
                         }
                     }
                     finalState = tempCases;
