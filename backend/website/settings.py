@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'home',
     'users',
     'account',
-    'testapp',
     #'base.apps.BaseConfig' also registers the app
     'base',
     'component_api',

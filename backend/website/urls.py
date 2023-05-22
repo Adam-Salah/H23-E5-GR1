@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 from account.views import(
     registration_view,
@@ -34,7 +35,7 @@ urlpatterns = [
 
     path('login/', login_view, name="login"),
 
-    path('testapp/', include('testapp.urls')),
+    path('browse/', TemplateView.as_view(template_name='browse.html'), name='browse'),
 
     path('api/', include('api.urls')),
 
