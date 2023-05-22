@@ -1,0 +1,203 @@
+:root {
+    background-color: white;
+    font-family: monospace;
+    font-size: 0.5vw;
+}
+
+/* Banner */
+
+.banner {
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    color: black;
+    padding-bottom: 1vh;
+    height: 10vh;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.banner_height {
+    top: 0;
+    height: 11vh;
+}
+
+.logo {
+    height: 75%;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateX(10%) translateY(-50%);
+    float: left;
+    border: 1vh solid red;
+    border-radius: 20%;
+}
+
+.links-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: right;
+}
+
+.links-container button {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 4rem;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-right: 3rem;
+    border-radius: 15%;
+    cursor: pointer;
+}
+
+.separator {
+    position: fixed;
+    height: .1vh;
+    z-index: 1;
+    width: 99%;
+    top: 11vh;
+    transform: translateY(-10%);
+    background-color: black;
+}
+
+/* Login / Register */
+
+.card {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10%);
+    font-size: 3em;
+    box-sizing: border-box;
+    background-color: white;
+    width: min-content;
+    height: min-content;
+    padding: 5rem 10rem;
+    border: 0.3vh solid black;
+    border-radius: 20%;
+}
+
+.card form {
+    margin-top: 25%;
+    text-align: center;
+}
+
+.card form input {
+    position: relative;
+    width: 150%;
+    left: -25%;
+    background-color: white;
+}
+
+.card form label {
+
+}
+
+.card form input#username, #email, #password {
+    font-size: 1em;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+}
+
+.card form input.submit {
+
+    margin-top: 20%;
+    padding: 10% 0;
+    font-family: monospace;
+    font-size: 1em;
+}
+
+/* Browse */
+
+.browsing_container {
+    display: block;
+}
+
+.tabs_list {
+    margin-top: 1vh;
+    transform: translateX(-10%);
+    width: 25vw;
+    position: fixed;
+    float: left;
+}
+
+.tabs {
+    --height: Calc((100vh - 13vh) / 5);
+    border: solid black .2vh;
+    height: var(--height);
+    line-height: var(--height);
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.project_list {
+    position: relative;
+    left: 25vw;
+    width: 70vw;
+    float: left;
+    margin-left: 1vw;
+    margin-top: 1vh;
+}
+
+.project_list div {
+    position: relative;
+    float: left;
+    margin: 8vh 3vw;
+    overflow-wrap: normal;
+    text-align: center;
+    border: 0.2vh black solid;
+    border-radius: 10%;
+}
+
+.project_list div div {
+    height: 10vw;
+    width: 10vw;
+}
+
+/* Project */
+
+.sidebar-left {
+    cursor: grab;
+    position: fixed;
+    top: Calc(50% + 5.5vh);
+    transform: translateY(-50%);
+    left: 5vh;
+    border: 0.1vw black solid;
+    border-radius: 20%;
+    padding: 2vh;
+    background-color: white;
+}
+
+.sidebar-left div img{
+    width: 3vw;
+    height: 3vw;
+}
+
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(10, min-content);
+}
+
+.case {
+    --caseHeight: 100px;
+    height: var(--caseHeight);
+    width: var(--caseHeight);
+    border: black solid 1px;
+    background-color: grey;
+
+}
+
+.case div img {
+    cursor: grab;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+}

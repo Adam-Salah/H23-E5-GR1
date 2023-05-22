@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 from account.views import(
-    registration_view
+    registration_view,
+    login_view,
 )
 
 urlpatterns = [
@@ -31,13 +33,11 @@ urlpatterns = [
 
     path('register/', registration_view, name="register"),
 
-    path('testapp/', include('testapp.urls')),
+    path('login/', login_view, name="login"),
 
-    #path('api/', include('api.urls')),
+    path('browse/', TemplateView.as_view(template_name='browse.html'), name='browse'),
 
     path('api/', include('api.urls')),
 
     path('component_api/', include('component_api.urls')),
-
-    #path('users/', include('playgroud.urls'))
 ]
