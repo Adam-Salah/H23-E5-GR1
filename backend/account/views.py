@@ -8,6 +8,14 @@ from django.contrib import messages
 # Create your views here.
 
 def registration_view(request):
+	""" Page pour enregistrer un utilisateur
+
+	Args:
+		request (_type_): _description_
+
+	Returns:
+		_type_: _description_
+	"""
 	context = {}
 	if request.POST:
 		form = RegistrationForm(request.POST)
@@ -27,6 +35,12 @@ def registration_view(request):
 	return render(request, 'register.html', context)
 
 def login_view(request):
+
+	""" Page pour login
+
+	Returns:
+		_type_: _description_
+	"""
 
 	if request.method == 'POST':
 		email = request.POST.get('email')

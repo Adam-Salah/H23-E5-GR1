@@ -4,6 +4,22 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class MyAccountManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
+
+		""" Crée un utilisateur normal
+
+		Args:
+			email (_type_): _description_
+			username (_type_): _description_
+			password (_type_, optional): _description_. Defaults to None.
+
+		Raises:
+			ValueError: _description_
+			ValueError: _description_
+
+		Returns:
+			_type_: _description_
+		"""
+
 		if not email:
 			raise ValueError('Users must have an email address')
 		if not username:
@@ -19,6 +35,17 @@ class MyAccountManager(BaseUserManager):
 		return user
 
 	def create_superuser(self, email, username, password):
+
+		""" Crée un superuser
+
+		Args:
+			email (_type_): _description_
+			username (_type_): _description_
+			password (_type_): _description_
+
+		Returns:
+			_type_: _description_
+		"""
 		user = self.create_user(
 			email=self.normalize_email(email),
 			password=password,
@@ -32,6 +59,14 @@ class MyAccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
+	""" Compte
+
+	Args:
+		AbstractBaseUser (_type_): _description_
+
+	Returns:
+		_type_: _description_
+	"""
 	email 		= models.EmailField(verbose_name="email", max_length=60, unique=True)
 	username 	= models.CharField(max_length=30, unique=True)
 	#date_joined	= models.DateTimeField(verbose_name='date joined', auto_now_add=True)

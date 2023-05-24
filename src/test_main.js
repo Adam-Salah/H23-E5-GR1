@@ -4,7 +4,6 @@ import { Circuit } from './circuit.js';
 
 import { Calculator } from './calculations.js';
 
-
 var circuit = new Circuit();
 
 circuit.add(new Resistor(20, 20, 50));
