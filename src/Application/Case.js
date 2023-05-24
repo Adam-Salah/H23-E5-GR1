@@ -9,6 +9,12 @@ function Case({x, y, type, pushComponent}) {
 	
 	let id = x.toString().concat(';', y.toString());
 	
+	/**
+	 * Accept définie les types d'objets que l'on peut glisser sur la case
+	 * Drop définie l'action à effectuer. Içi, on crée une nouvelle composante dans la case.
+	 * Collect recueille des informations sur l'état de la case. Par exemple, elle peut détecter une composante qui est
+	 *      au-dessus de la case.
+	 */
 	const [{isOver, didDrop}, drop] = useDrop(
 		() => ({
 			accept: [ItemTypes.LED, ItemTypes.SOURCE, ItemTypes.RESISTOR],
@@ -24,6 +30,9 @@ function Case({x, y, type, pushComponent}) {
 		pushComponent(x, y, itemType, itemId)
 	}
 	
+	/**
+	 * Décide quel type de composante afficher dans la case
+	 */
 	let component;
 	switch (type) {
 		case 'Led':
@@ -40,11 +49,12 @@ function Case({x, y, type, pushComponent}) {
 			break;
 	}
 	
+	/**
+	 * S'il y a une composante au dessus, la case devient jaune
+	 */
 	let color;
 	if (isOver) {
 		color = 'yellow';
-	} else if (didDrop) {
-		color = 'blue';
 	}
 	
 	return (

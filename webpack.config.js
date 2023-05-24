@@ -10,12 +10,6 @@ module.exports = {
         './Login': './Login',
         './Projet': './Projet',
         './Application/Application': './Application/Application',
-        './Application/Case': './Application/Case',
-        './Application/Grille': './Application/Grille',
-        './Application/Constantes': './Application/Constantes',
-        './Application/Ligne': './Application/Ligne',
-        './Application/Composantes/Led': './Application/Composantes/Led',
-        './Application/Composantes/Composante': './Application/Composantes/Composante',
 
         // ak
         components: './components.js',

@@ -1,5 +1,5 @@
 :root {
-    background-color: white;
+    background-color: whitesmoke;
     font-family: monospace;
     font-size: 0.5vw;
 }
@@ -14,9 +14,10 @@
     color: black;
     padding-bottom: 1vh;
     height: 10vh;
-    width: 100%;
+    width: 101%;
     overflow: hidden;
     white-space: nowrap;
+    transform:translateX(-1%);
 }
 
 .banner_height {
@@ -173,7 +174,7 @@
     background-color: white;
 }
 
-.sidebar-left div img{
+.sidebar-left div img {
     width: 3vw;
     height: 3vw;
 }
@@ -185,7 +186,7 @@
 }
 
 .case {
-    --caseHeight: 100px;
+    --caseHeight: 140px;
     height: var(--caseHeight);
     width: var(--caseHeight);
     border: black solid 1px;
@@ -196,8 +197,36 @@
 .case div img {
     cursor: grab;
     position: relative;
-    width: 50px;
-    height: 50px;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%);
+    width: 100px;
+    height: 100px;
+    top: 20px;
+    left: 20px;
+}
+
+.resultats {
+    position: fixed;
+    font-size: 3vh;
+    top: Calc(50% + 5.5vh);
+    transform: translateY(-50%);
+    right: 5vh;
+    border: 0.1vw black solid;
+    border-radius: 20%;
+    padding: 2vh;
+    background-color: white;
+}
+.poubelle {
+    cursor: grab;
+    position: fixed;
+    top: Calc(30% + 5.5vh);
+    transform: translateY(-50%);
+    left: 5vh;
+    border: 0.1vw black solid;
+    border-radius: 20%;
+    padding: 2vh;
+    background-color: white;
+}
+
+.poubelle img {
+    width: 3vw;
+    height: 3vw;
 }

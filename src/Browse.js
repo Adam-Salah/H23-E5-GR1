@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Tab, TabList, Tabs, TabPanel} from "react-tabs";
+import {Tab, TabList} from "react-tabs";
 
-
+/**
+ *
+ * Permet de changer de fenêtre pour voir differents types de projets (inutilisé)
+ */
 function BrowseTabs() {
     return (
         <TabList className={"tabs_list"}>
@@ -15,7 +18,11 @@ function BrowseTabs() {
     )
 }
 
-function Project(props) {
+/**
+ *
+ * Boîte de type Card qui montre les projets déjà crées
+ */
+function Projet(props) {
     return (
         <div>
             <div style={{backgroundColor: props.color}}></div>
@@ -26,24 +33,32 @@ function Project(props) {
     );
 }
 
-function ProjectList() {
+/**
+ *
+ * Liste de tous les projets déja crées (valeurs aléatoires, car lien avec database non existant)
+ */
+function ProjetList() {
     let projects = [];
     for (let i = 0; i < 100; i++) {
         let color = Math.floor(Math.random() * 16777215).toString(16);
         let key = Math.floor(Math.random() * 1000000);
-        projects.push(<Project color={"#" + color} key={key}/>)
+        projects.push(<Projet color={"#" + color} key={key}/>)
     }
     return(
         projects
     )
 }
 
+/**
+ *
+ * Render des éléments interagibles de la page
+ */
 const root = ReactDOM.createRoot(document.getElementById('browsing_container'));
 root.render(
     <div>
         <BrowseTabs />
         <div className={"project_list"}>
-            <ProjectList />
+            <ProjetList />
         </div>
     </div>
 )

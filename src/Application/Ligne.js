@@ -2,14 +2,17 @@ import React from 'react';
 
 function Ligne({from, to}) {
 	
-	let eleFrom = document.getElementById(from);
-	let eleTo = document.getElementById(to);
+	/**
+	 * Coordonées de départ et fin de la ligne
+	 */
+	let eleFromX = Number(from.charAt(0)) * 150
+	let eleFromY = Number(from.charAt(2)) * 150
+	let eleToX = Number(to.charAt(0)) * 150
+	let eleToY = Number(to.charAt(2)) * 150
 	
-	let eleFromX = eleFrom.getBoundingClientRect().x;
-	let eleFromY = eleFrom.getBoundingClientRect().y;
-	let eleToX = eleTo.getBoundingClientRect().x;
-	let eleToY = eleTo.getBoundingClientRect().y;
-	
+	/**
+	 * Calcul de triangle de pythagore + trigonométrie pour trouver la rotation et taille.
+	 */
 	let width = eleToX - eleFromX;
 	let height = eleToY - eleFromY;
 	let length = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
@@ -21,12 +24,12 @@ function Ligne({from, to}) {
 		<div className={'ligne'} style={
 			{
 				position: 'absolute',
-				top: eleFromY - 50,
-				left: eleFromX + 50,
+				top: eleFromY + 55,
+				left: eleFromX + 95,
 				width: length,
 				transform: 'rotate('+rotation+'deg)',
 				transformOrigin: 'top left',
-				border: '1px solid black'
+				border: '1px solid red'
 			}
 		} />
 	);

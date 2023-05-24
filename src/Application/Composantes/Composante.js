@@ -3,6 +3,10 @@ import {useDrag} from 'react-dnd';
 import {ItemTypes} from '../Constantes';
 
 function Composante({x, y, itemType, image}) {
+	
+	/**
+	 * Si l'Id de la composante débute par c, c'est qu'elle vient de la Sidebar et non de la grille
+	 */
 	let id;
 	if (x === undefined || y === undefined) {
 		id = 'c';
@@ -10,10 +14,14 @@ function Composante({x, y, itemType, image}) {
 		id = x.toString().concat(';', y.toString());
 	}
 	
-	
 	if (itemType === undefined) {
 		itemType = ItemTypes.NULL;
 	}
+	
+	/**
+	 * Type est le type de la composante
+	 * Item indique les paramètres passés à l'endroit où l'on glisse la composante
+	 */
 	let dropState = false;
 	const [{isDragging, didDrop}, drag] = useDrag(() => ({
 		type: itemType,
@@ -31,7 +39,7 @@ function Composante({x, y, itemType, image}) {
 	if (!isDragging) {
 		return (
 			<div className={'composante'} id={id} data-dropstate={dropState}>
-				<img src={image} ref={drag} alt={'Led'} />
+				<img src={image} ref={drag} />
 			</div>
 		);
 	}

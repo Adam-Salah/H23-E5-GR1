@@ -4,6 +4,9 @@ import Resistor from "./Composantes/Resistor";
 import Source from "./Composantes/Source";
 import {v4 as uuidv4} from 'uuid';
 
+/**
+ * Contient un de chaque composante, utilisables à l'infini
+ */
 function SideBar() {
     return (
         <div className={'sidebar-left'}>

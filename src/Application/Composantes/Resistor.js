@@ -2,13 +2,16 @@ import React from "react";
 import {ItemTypes} from "../Constantes";
 import Composante from "./Composante";
 
+/**
+ * Affiche une résistance
+ */
 function Resistor({x, y}) {
     return(
         <Composante
             x={x}
             y={y}
             itemType={ItemTypes.RESISTOR}
-            image={"./ressources/images/Resistance.png"}
+            image={"./ressources/icons/git-commit.svg"}
             resistance={50}
         />
     )
