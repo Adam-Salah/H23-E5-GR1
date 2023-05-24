@@ -29,7 +29,14 @@ export class Calculator {
     constructor() {
     }
 
+    /**
+     * Identifie tous les noeuds
+     * @param {*} circuit 
+     * @returns 
+     */
+
     identifyNodes(circuit) {
+        
         var nodes = new Set();
 
         // iterate throught every component
@@ -60,6 +67,12 @@ export class Calculator {
         return nodes;
     }
 
+    /**
+     * vérifie si deux Sets sont égaux
+     * @param {*} setA 
+     * @param {*} setB 
+     * @returns 
+     */
     setsAreEqual(setA, setB) {
 
         if (setA.size !== setB.size) {
@@ -76,6 +89,11 @@ export class Calculator {
         }
     }
 
+    /**
+     * Calcule la résistance
+     * @param {*} circuit 
+     * @returns 
+     */
     calculateResistance(circuit){
 
         // create an array of all resistors
@@ -128,6 +146,12 @@ export class Calculator {
         return resistors[0].resistance;
     }
 
+    /**
+     * véfrifie si deux composantes sont en série
+     * @param {*} componentA 
+     * @param {*} componentB 
+     * @returns 
+     */
     // two components are in series if they are only connected to eachother
     isInSeries(componentA, componentB){
         console.log("isInSeries Called")
@@ -153,7 +177,13 @@ export class Calculator {
         }
         return false;
     }
-    
+    /**
+     * véfrifie si deux composantes sont en parallel
+     * @param {*} componentA 
+     * @param {*} componentB 
+     * @param {*} nodes 
+     * @returns 
+     */
     // two components are in parallel if they are connected to the same node
     isInParallel(componentA, componentB, nodes){
         for(let node of nodes){
@@ -169,6 +199,15 @@ export class Calculator {
         }
         return false;
     }
+
+    /**
+     * Remplace par un résistor équivalent
+     * @param {*} resistors 
+     * @param {*} resistor 
+     * @param {*} otherResistor 
+     * @param {*} series 
+     * @returns 
+     */
 
     // in the array of resistors, replaces resistor and otherResistor with another
     // equivalent resistor
@@ -193,7 +232,11 @@ export class Calculator {
         return resistors
     }
 
-
+    /**
+     * Calcule le voltage
+     * @param {*} circuit 
+     * @returns 
+     */
     calculateVoltage(circuit){
         var voltage = 0;
         for (let i = 0; i < circuit.components.length; i++) {
@@ -204,42 +247,15 @@ export class Calculator {
         return voltage;
     }
 
+    /**
+     * Calcule le courant
+     * @param {*} voltage 
+     * @param {*} resistance 
+     * @returns 
+     */
     calculateCurrent(voltage, resistance){
         if(resistance == 0)
             resistance = 1;
         return voltage/resistance;
     }
 }
-        /*
-
-        // nodes is an array containing node(s) which are arrays of components
-        let nodes = [];
-
-        // iterate throught every component of the circuit
-        for (let component of circuit) {
-
-            // iterate throught every component's connections (connectedTo Set)
-            for (let connectedTo of component.connectedTo) {
-
-                let nodeFound = false;
-
-                // iterate throught every node
-                for (let node of nodes) {
-
-                // 
-                if (node.includes(connectedTo)) {
-                    nodeFound = true;
-                    if (!node.includes(component)) {
-                    node.push(component);
-                    }
-                    break;
-                }
-                }
-                if (!nodeFound) {
-                nodes.push([component, connectedComponent]);
-                }
-            }
-        }
-        return nodes;
-
-        */
