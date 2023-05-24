@@ -8,7 +8,7 @@ function Poubelle({remove}) {
 	/**
 	 * Supprime une composante lorsqu'on la glisse sur la poubelle
 	 */
-	const [drop] = useDrop(
+	const [{}, drop] = useDrop(
 		() => ({
 			accept: [ItemTypes.LED, ItemTypes.SOURCE, ItemTypes.RESISTOR],
 			drop: (item) => remove(item.itemId, -1, -1),

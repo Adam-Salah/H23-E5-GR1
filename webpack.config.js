@@ -1,5 +1,9 @@
 const path = require('path');
 
+/**
+ * Permet de bundler plusieurs fichiers .js en un seul fichier utilisable sur une page html
+ * Fichiers de distribution sauvegardés dans ./dist
+ */
 module.exports = {
     mode: "development",
     context: path.resolve(__dirname, 'src'),
@@ -10,13 +14,6 @@ module.exports = {
         './Login': './Login',
         './Projet': './Projet',
         './Application/Application': './Application/Application',
-
-        // ak
-        components: './components.js',
-        circuit: './circuit.js',
-        calculations: './calculations.js',
-        test_main: './test_main.js', // for testing, delete later
- 
     },
     module: {
         rules: [
